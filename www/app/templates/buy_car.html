@@ -107,7 +107,7 @@
                             <h4><b>Область:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-disabled="!include_sity">
+                            <select class="form-control" ng-model="region" ng-change="updateCities()" ng-disabled="!include_sity">
                                 <option ng-repeat="region in Regions" value="{{region.id}}">{{region.name}}</option>
                             </select>
                         </div>

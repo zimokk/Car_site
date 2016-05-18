@@ -7,8 +7,18 @@ app.factory('Cities',function($http){
             }).error(function(msg){
 
             });
+        },
+        getByRegion: function(region_id){
+            $http.post('php/read_cities_by_region.php', {
+                    'region_id' : region_id
+                })
+                .success(function(response){
+                    angular.copy(response.cities,citiesService.all);
+                })
+                .error(function(data, status, headers, config){
+
+                });
         }
     };
-    citiesService.getAll();
     return citiesService;
 });
