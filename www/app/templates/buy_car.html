@@ -64,7 +64,7 @@
                         </div>
                         <div class="col-sm-7">
                             <select class="form-control" ng-model="body_type" required ng-disabled="!include_body_type">
-                                <option></option>
+                                <option ng-repeat="body in Bodies" value="{{body.id}}">{{body.name}}</option>
                             </select>
                         </div>
                     </div>
