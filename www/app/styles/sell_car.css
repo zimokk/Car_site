@@ -1,0 +1,56 @@
+.btn-circle.btn-l {
+    width: 100px;
+    height: 100px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 100px;
+}
+.btn-circle.btn-l.first{
+	border-width:thick;
+    border-color:bisque;
+}
+
+.btn-circle.btn-l.first.small-letters{
+    font-size: 12px;
+}
+
+.btn-circle.btn-l.small-letters {
+    width: 100px;
+    height: 100px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 100px;
+    font-size: 12px;
+}
+
+.container-fluid-special {    
+    margin-top: 150px;
+    border-width:thin;
+    border-color:black;
+}
+
+.container-fluid-adv {
+       margin-top: 200px;
+       margin-left: 463px;
+       width:auto;
+       height: auto;
+}
+
+.navbar-default {
+    border-bottom: 1px solid grey;
+}
+
+.biglat {
+    font-size: 14pt;
+}
+
+.smalllat {
+    font-size: 12pt;
+}
+
+.smalllat.size {
+    height: auto;
+    width: 160px;
+}
