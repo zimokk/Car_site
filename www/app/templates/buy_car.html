@@ -92,7 +92,7 @@
                         <h4><b>Страна:</b></h4>
                     </div>
                     <div class="col-sm-7">
-                        <select class="form-control">
+                        <select class="form-control" ng-disabled="!include_sity">
                             <option ng-repeat="country in Countries" value="{{country.id}}">{{country.name}}</option>
                         </select>
                     </div>
@@ -106,7 +106,7 @@
                         <h4><b>Область:</b></h4>
                     </div>
                     <div class="col-sm-7">
-                        <select class="form-control">
+                        <select class="form-control" ng-disabled="!include_sity">
                             <option ng-repeat="region in Regions" value="{{region.id}}">{{region.name}}</option>
                         </select>
                     </div>
@@ -120,33 +120,11 @@
                         <h4><b>Город:</b></h4>
                     </div>
                     <div class="col-sm-7">
-                        <select class="form-control">
+                        <select class="form-control" ng-disabled="!include_sity">
                             <option ng-repeat="city in Cities" value="{{city.id}}">{{city.name}}</option>
                         </select>
                     </div>
                 </div>
-            </div>
-            <div class="container-fluid"><p></p>
-                <b class="biglat">Область: </b><select class="smalllat size">
-                    <option>Любой</option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                </select>
-            </div>
-            <div class="container-fluid"><p></p>
-                <b class="biglat">Город: </b><select class="smalllat size">
-                    <option>Любой</option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                </select>
             </div>
             <div class="container-fluid">
                 <div class="row">
