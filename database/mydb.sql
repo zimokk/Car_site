@@ -1,13 +1,31 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT=0;
-START TRANSACTION;
-SET time_zone = "+00:00";
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+
+CREATE TABLE IF NOT EXISTS `bodies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+
+INSERT INTO `bodies` (`id`, `name`) VALUES
+(9, 'Кабриолет'),
+(6, 'Купе'),
+(7, 'Лимузин'),
+(13, 'Микроавтобус'),
+(8, 'Минивэн'),
+(10, 'Пикап'),
+(14, 'Родстер'),
+(1, 'Седан'),
+(4, 'Универсал'),
+(11, 'Фургон'),
+(5, 'Хетчбэк');
 
 CREATE TABLE IF NOT EXISTS `cars` (
   `idCars` int(11) NOT NULL AUTO_INCREMENT,
@@ -16,14 +34,15 @@ CREATE TABLE IF NOT EXISTS `cars` (
   `cost` varchar(45) DEFAULT NULL,
   `year` int(11) DEFAULT NULL,
   `fuel` varchar(45) DEFAULT NULL,
-  `body` varchar(45) DEFAULT NULL,
+  `body_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL,
   PRIMARY KEY (`idCars`),
   KEY `fk_Cars_Users_idx` (`user_id`),
   KEY `fk_Cars_Marks_idx` (`mark`),
   KEY `fk_Cars_Models_idx` (`model`),
-  KEY `fk_Cars_Cities_idx` (`city_id`)
+  KEY `fk_Cars_Cities_idx` (`city_id`),
+  KEY `fk_Cars_Bodies_idx` (`body_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `cities` (
@@ -33,7 +52,10 @@ CREATE TABLE IF NOT EXISTS `cities` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_Cities_Regions_idx` (`region_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+INSERT INTO `cities` (`id`, `region_id`, `name`) VALUES
+(1, 1, 'Минск');
 
 CREATE TABLE IF NOT EXISTS `comments` (
   `idnews` int(11) NOT NULL,
@@ -1706,7 +1728,10 @@ CREATE TABLE IF NOT EXISTS `regions` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `fk_Regions_Countries_idx` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+INSERT INTO `regions` (`id`, `country_id`, `name`) VALUES
+(1, 1, 'Минская обл.');
 
 CREATE TABLE IF NOT EXISTS `users` (
   `idUsers` int(11) NOT NULL AUTO_INCREMENT,
@@ -1723,6 +1748,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 
 ALTER TABLE `cars`
+  ADD CONSTRAINT `fk_Cars_Bodies` FOREIGN KEY (`body_id`) REFERENCES `bodies` (`id`),
   ADD CONSTRAINT `fk_Cars_Cities` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Marks` FOREIGN KEY (`mark`) REFERENCES `marks` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Models` FOREIGN KEY (`model`) REFERENCES `models` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -1745,7 +1771,6 @@ ALTER TABLE `recall`
 
 ALTER TABLE `regions`
   ADD CONSTRAINT `fk_Regions_Countries` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
