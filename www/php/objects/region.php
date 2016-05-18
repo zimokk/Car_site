@@ -28,10 +28,10 @@ class Region{
 
         return $stmt;
     }
-    function readByCountry($country_id){
+    function readByCountry(){
 
             // select all query
-            $query = "SELECT * FROM " . $this->table_name . " WHERE country_id = ". $country_id .";";
+            $query = "SELECT * FROM " . $this->table_name . " WHERE country_id = ". $this->country_id .";";
 
             // prepare query statement
             $stmt = $this->conn->prepare( $query );
