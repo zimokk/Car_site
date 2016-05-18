@@ -1,185 +1,191 @@
 <navbar-block info=""></navbar-block>
 <body>
-<div style="width: 30%; border: solid 2px black">
-    <form class="form-group">
-        <div class="container-fluid-special" >
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h2>Марка авто:</h2>
-                        <select class="smalllat form-control" ng-model="mark_id" required>
-                            <option  ng-repeat="mark in Marks" value={{mark.id}}>{{mark.name}}</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-6">
-                        <h2>Модель:</h2>
-                        <select class="form-control" ng-model="model_id" required>
-                            <option ng-repeat="model in Models" value={{model.id}} ng-if=" model.mark_id == mark_id">{{model.name}}</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-1">
-                        <input type="checkbox" ng-model="include_year" class="form-control">
-                    </div>
-                    <div class="col-sm-2">
-                        <h4><b>Год c </b></h4>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" ng-model="year_begin" min="1970" max="2016" class="form-control" required ng-disabled="!include_year">
-                    </div>
-                    <div class="col-sm-1">
-                        <h4><b>по</b></h4>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" ng-model="year_end" min={{year_begin}} max="2016" class="form-control" required ng-disabled="!include_year">
+<div class="row">
+    <div class="col-md-4" style="border: solid 2px black">
+        <form class="form-group">
+            <div class="container-fluid-special" >
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Марка авто:</h2>
+                            <select class="smalllat form-control" ng-model="mark_id" required>
+                                <option  ng-repeat="mark in Marks" value={{mark.id}}>{{mark.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <h2>Модель:</h2>
+                            <select class="form-control" ng-model="model_id" required>
+                                <option ng-repeat="model in Models" value={{model.id}} ng-if=" model.mark_id == mark_id">{{model.name}}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-1">
-                        <input type="checkbox" ng-model="include_fuel" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                        <h4><b>Двигатель:</b></h4>
-                    </div>
-                    <div class="col-sm-7">
-                        <select class="form-control" ng-model="fuel" required ng-disabled="!include_fuel">
-                            <option></option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-1">
-                        <input type="checkbox" ng-model="include_body_type" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                        <h4><b>Тип кузова:</b></h4>
-                    </div>
-                    <div class="col-sm-7">
-                        <select class="form-control" ng-model="body_type" required ng-disabled="!include_body_type">
-                            <option></option>
-                        </select>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <input type="checkbox" ng-model="include_year" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <h4><b>Год c </b></h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="number" ng-model="year_begin" min="1970" max="2016" class="form-control" required ng-disabled="!include_year">
+                        </div>
+                        <div class="col-sm-1">
+                            <h4><b>по</b></h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="number" ng-model="year_end" min={{year_begin}} max="2016" class="form-control" required ng-disabled="!include_year">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-1">
-                        <input type="checkbox" ng-model="include_transmission" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                        <h4><b>Коробка передач:</b></h4>
-                    </div>
-                    <div class="col-sm-7">
-                        <select class="form-control" ng-model="tramsmission" required ng-disabled="!include_transmission">
-                            <option></option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-1">
-                        <input type="checkbox" ng-model="include_sity" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                        <h4><b>Страна:</b></h4>
-                    </div>
-                    <div class="col-sm-7">
-                        <select class="form-control" ng-disabled="!include_sity">
-                            <option ng-repeat="country in Countries" value="{{country.id}}">{{country.name}}</option>
-                        </select>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <input type="checkbox" ng-model="include_fuel" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <h4><b>Двигатель:</b></h4>
+                        </div>
+                        <div class="col-sm-7">
+                            <select class="form-control" ng-model="fuel" required ng-disabled="!include_fuel">
+                                <option></option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-1">
-                    </div>
-                    <div class="col-sm-4">
-                        <h4><b>Область:</b></h4>
-                    </div>
-                    <div class="col-sm-7">
-                        <select class="form-control" ng-disabled="!include_sity">
-                            <option ng-repeat="region in Regions" value="{{region.id}}">{{region.name}}</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-1">
-                    </div>
-                    <div class="col-sm-4">
-                        <h4><b>Город:</b></h4>
-                    </div>
-                    <div class="col-sm-7">
-                        <select class="form-control" ng-disabled="!include_sity">
-                            <option ng-repeat="city in Cities" value="{{city.id}}">{{city.name}}</option>
-                        </select>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <input type="checkbox" ng-model="include_body_type" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <h4><b>Тип кузова:</b></h4>
+                        </div>
+                        <div class="col-sm-7">
+                            <select class="form-control" ng-model="body_type" required ng-disabled="!include_body_type">
+                                <option></option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-1">
-                        <input type="checkbox" ng-model="include_price" class="form-control">
-                    </div>
-                    <div class="col-sm-2">
-                        <h4><b>Цена c</b></h4>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" min="0" ng-model="min_price" class="form-control" ng-disabled="!include_price" required>
-                    </div>
-                    <div class="col-sm-1">
-                        <h4><b>до</b></h4>
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="number" min={{min_price}} ng-model="max_price" class="form-control" ng-disabled="!include_price" required>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <input type="checkbox" ng-model="include_transmission" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <h4><b>Коробка передач:</b></h4>
+                        </div>
+                        <div class="col-sm-7">
+                            <select class="form-control" ng-model="tramsmission" required ng-disabled="!include_transmission">
+                                <option></option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <input type="checkbox" ng-model="include_sity" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <h4><b>Страна:</b></h4>
+                        </div>
+                        <div class="col-sm-7">
+                            <select class="form-control" ng-disabled="!include_sity">
+                                <option ng-repeat="country in Countries" value="{{country.id}}">{{country.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-1">
+                        </div>
+                        <div class="col-sm-4">
+                            <h4><b>Область:</b></h4>
+                        </div>
+                        <div class="col-sm-7">
+                            <select class="form-control" ng-disabled="!include_sity">
+                                <option ng-repeat="region in Regions" value="{{region.id}}">{{region.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-1">
+                        </div>
+                        <div class="col-sm-4">
+                            <h4><b>Город:</b></h4>
+                        </div>
+                        <div class="col-sm-7">
+                            <select class="form-control" ng-disabled="!include_sity">
+                                <option ng-repeat="city in Cities" value="{{city.id}}">{{city.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <input type="checkbox" ng-model="include_price" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <h4><b>Цена c</b></h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="number" min="0" ng-model="min_price" class="form-control" ng-disabled="!include_price" required>
+                        </div>
+                        <div class="col-sm-1">
+                            <h4><b>до</b></h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="number" min={{min_price}} ng-model="max_price" class="form-control" ng-disabled="!include_price" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid"><p></p>
+                    <b class="biglat">Обмен </b>
+                    <input type="checkbox" class="large" name="trade"/>
+                </div>
+                <div class="container-fluid"><p></p>
+                    <input type="submit" value="Найти" class="btn btn-primary">
+                </div>
             </div>
-            <div class="container-fluid"><p></p>
-                <b class="biglat">Обмен </b>
-                <input type="checkbox" class="large" name="trade"/>
-            </div>
-            <div class="container-fluid"><p></p>
-                <input type="submit" value="Найти" class="btn btn-primary">
-            </div>
-        </div>
-    </form>
-    <!-- Нижняя левая таблица -->
+        </form>
+    </div>
+    <div class="col-md-8" style="border: dotted 2px black;">
+        Возможно реклама
+    </div>
 </div>
-<table border="1" width="463">
-    <tr>
-        <td>
-            <div class="containder-fluid">
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">BMW</a><p></p>
-                <a href = "Bla_bla_ссылко">Ford</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-                <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            </div>
-        </td>
-    </tr>
-</table>
+<div class="row">
+    <div class="col-md-4" style="border: solid 2px black">
+        <div class="containder-fluid">
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">BMW</a><p></p>
+            <a href = "Bla_bla_ссылко">Ford</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+            <a href = "Bla_bla_ссылко">Audi</a><p></p>
+        </div>
+    </div>
+    <div class="col-md-8" style="border: solid 2px black">
+        Блоки с машинками
+    </div>
+</div>
+</body>
