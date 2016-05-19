@@ -12,5 +12,9 @@ app.controller('BuyCarCtrl', ['$scope','Models','Marks', 'Countries', 'Regions',
     };
     $scope.updateCities = function () {
         Cities.getByRegion($scope.region);
+    };
+    $scope.changeMark = function(mark_id){
+        debugger;
+        $scope.mark_id = mark_id;
     }
 }]);

@@ -157,56 +157,41 @@
             </div>
         </form>
     </div>
-    <div class="col-md-8" style="border: solid 2px black;height:660px">
-        Возможно реклама
+    <div class="col-md-8 row" style="border: solid 2px black;height:660px">
+        <div class="col-md-4" style="height:600px ;overflow: scroll;" ng-if="mark_id">
+            <button class="btn btn-default" ng-repeat="model in Models" ng-if="model.mark_id == mark_id">
+                <h4>{{model.name}}</h4>
+            </button>
+        </div>
+        <div class="col-md-8">
+            Возможно реклама
+        </div>
     </div>
 </div>
 <div class="row" >
     <div class="col-md-4" style="border: solid 2px black">
-        <div class="containder-fluid">
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">BMW</a><p></p>
-            <a href = "Bla_bla_ссылко">Ford</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-            <a href = "Bla_bla_ссылко">Audi</a><p></p>
-        </div>
+        <button class="btn btn-default" ng-repeat="mark in Marks" ng-click="changeMark(mark.id)">{{mark.name}}</button>
     </div>
     <div class="col-md-8" style="border: solid 2px black;height:574px">
         <div class="col-md-12">
             <div class="conainter" style="border: dotted 3px black;height:180px;margin-top:15px">
                 <div class="row" >
-                  <div class="col-md-3" style="height:175px;border: solid 1px black;margin-left:12px" >
-
+                    <div class="col-md-3" style="height:175px;border: solid 1px black;margin-left:12px" >
                         <img src="../../images/horse.jpg" width="300px"  height="170px" alt="horse">
-
-                  </div>
-                  <div class="row">
-                  <div class="col-md-8" align="center" style="border: solid 1px black;height:50px" >
+                    </div>
+                    <div class="row">
+                    <div class="col-md-8" align="center" style="border: solid 1px black;height:50px" >
                     Имя машины
-                  </div>
-                  <div class="col-md-4" style="border: solid 1px black;height:125px">
+                    </div>
+                    <div class="col-md-4" style="border: solid 1px black;height:125px">
                     <p align="center">ТЕКСТУЛЯ</p>
-                  </div>
-                  <div class="col-md-4" style="border: solid 1px black;height:125px">
-                      ТЕКСТУЛЯ
-                      <div class="st">  <a href="#"> Подробнее</a> </div>
-                  </div>
+                    </div>
+                    <div class="col-md-4" style="border: solid 1px black;height:125px">
+                        ТЕКСТУЛЯ
+                        <div class="st">  <a href="#"> Подробнее</a> </div>
+                    </div>
 
-                  </div>
+                    </div>
                 </div>
             </div>
         </div>
