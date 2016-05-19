@@ -33,6 +33,7 @@ if($num>0){
 
         $data .= '{';
             $data .= '"idCars":"'  . $idCars . '",';
+            $data .= '"description":"'  . $description . '",';
             $data .= '"mark_id":"'  . $mark_id . '",';
             $data .= '"model_id":"'  . $model_id . '",';
             $data .= '"cost":"'  . $cost . '",';

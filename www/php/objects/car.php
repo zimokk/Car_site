@@ -6,6 +6,7 @@ class Car{
 
     // object properties
     public $idCars;
+    public $description;
     public $mark_id;
     public $model_id;
     public $cost;
@@ -37,14 +38,10 @@ class Car{
     }
     function readWithFiltr ()
     {
-        $helper;      
-        if(!$idCars.is_null())
-        {
-            $helper = "WHERE idCars = " . $idCars ;
-        }
+        $helper;
         if(!$mark_id.is_null())
         {
-            $helper = $helper . "and mark_id = " . $mard_id ;
+            $helper = $helper . " Where mark_id = " . $mark_id ;
         }
         if(!$model_id.is_null())
         {
