@@ -8,7 +8,6 @@ app.factory('Marks',function($http){
         },
         getById: function(id){
             var item;
-            debugger;
             marksService.all.forEach(function(mark,number){
                 if(mark.id == id){
                     item = mark;
