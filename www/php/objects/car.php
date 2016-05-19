@@ -35,5 +35,48 @@ class Car{
 
         return $stmt;
     }
+    function readWithFiltr ()
+    {
+        $helper;      
+        if(!$idCars.is_null())
+        {
+            $helper = "WHERE idCars = " . $idCars ;
+        }
+        if(!$mark_id.is_null())
+        {
+            $helper = $helper . "and mark_id = " . $mard_id ;
+        }
+        if(!$model_id.is_null())
+        {
+            $helper = $helper . "and model_id = " . $model_id ;
+        }
+        if(!$cost.is_null())
+        {
+            $helper = $helper . "and cost = " . $cost ;
+        }
+        if(!$year.is_null())
+        {
+            $helper = $helper . "and year = " . $year ;
+        }
+        if(!$fuel_id.is_null())
+        {
+            $helper = $helper . "and fuel_id = " . $fuel_id ;
+        }
+        if(!$transmission.is_null())
+        {
+            $helper = $helper . "and transmission = " . $transmission ;
+        }
+        if(!$body_id.is_null())
+        {
+           $helper = $helper . "and body_id = " . $body_id ;
+        }     
+        
+        $sql = "SELECT * FROM " . $this->table_name .  $helper . ";" ; 
+        
+        $query = $sql;
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+        return $stmt;
+    }
 }
 ?>
