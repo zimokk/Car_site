@@ -78,7 +78,7 @@
                             <h4><b>Коробка передач:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="tramsmission" required ng-disabled="!include_transmission">
+                            <select class="form-control" ng-model="transmission" required ng-disabled="!include_transmission">
                                 <option value="1">Механическая</option>
                                 <option value="2">Автомат</option>
                             </select>
@@ -88,13 +88,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_sity" class="form-control">
+                            <input type="checkbox" ng-model="include_city" class="form-control">
                         </div>
                         <div class="col-sm-4">
                             <h4><b>Страна:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="country" ng-change="updateRegions()" ng-disabled="!include_sity">
+                            <select class="form-control" ng-model="country" ng-change="updateRegions()" ng-disabled="!include_city">
                                 <option ng-repeat="country in Countries" value="{{country.id}}">{{country.name}}</option>
                             </select>
                         </div>
@@ -108,7 +108,7 @@
                             <h4><b>Область:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="region" ng-change="updateCities()" ng-disabled="!include_sity">
+                            <select class="form-control" ng-model="region" ng-change="updateCities()" ng-disabled="!include_city">
                                 <option ng-repeat="region in Regions" value="{{region.id}}">{{region.name}}</option>
                             </select>
                         </div>
@@ -122,7 +122,7 @@
                             <h4><b>Город:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-disabled="!include_sity">
+                            <select class="form-control" ng-disabled="!include_city" ng-model="city">
                                 <option ng-repeat="city in Cities" value="{{city.id}}">{{city.name}}</option>
                             </select>
                         </div>
@@ -159,12 +159,14 @@
     </div>
     <div class="col-md-8 row" style="height:660px;">
         <div class="col-md-4" style="height:100%; overflow-y: scroll;" ng-if="mark_id">
-            <button class="btn btn-default" ng-repeat="model in Models" ng-if="model.mark_id == mark_id">
+            <button class="btn btn-default" ng-repeat="model in Models" ng-if="model.mark_id == mark_id"
+                    ng-click="changeModel(model.id)">
                 <h4>{{model.name}}</h4>
             </button>
         </div>
         <div class="col-md-8">
             Возможно реклама
+            {{transmission}}
         </div>
     </div>
 </div>
@@ -174,7 +176,15 @@
     </div>
     <div class="col-md-8" style="border: solid 2px black;height:574px">
         <div class="col-md-12">
-            <div class="conainter" style="border: dotted 3px black;height:180px;margin-top:15px" ng-repeat="car in Cars">
+            <div class="conainter" style="border: dotted 3px black;height:180px;margin-top:15px" ng-repeat="car in Cars"
+                 ng-if="(car.mark_id == mark_id || !mark_id) &&
+                        (car.model_id == model_id || !model_id) &&
+                        ((include_year && car.year >= year_begin && car.year <= year_end) || !include_year) &&
+                        ((include_fuel && car.fuel_id == fuel) || !include_fuel) &&
+                        ((include_body_type && car.body_id == body_type) || !include_body_type) &&
+                        ((include_transmission && car.transmission == transmission) || !include_transmission) &&
+                        ((include_price && car.cost >= min_price && car.cost <= max_price) || !include_price) &&
+                        ((include_city && car.city_id == city) || !include_city)" >
                 <car-block car="car"></car-block>
             </div>
         </div>

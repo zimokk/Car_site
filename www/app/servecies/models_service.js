@@ -10,7 +10,6 @@ app.factory('Models',function($http){
         },
         getById: function(id){
             var item;
-            debugger;
             modelsService.all.forEach(function(model,number){
                 if(model.id == id){
                     item = model;

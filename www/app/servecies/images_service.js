@@ -18,6 +18,19 @@ app.factory('Images',function($http){
                 .error(function(data, status, headers, config){
 
                 });
+        },
+        getAvatarByCar: function(car_id){
+            var item;
+            $http.post('php/read_images_by_car.php', {
+                'car_id' : car_id
+            })
+            .success(function(response){
+                item = response.images[0].url;
+                return item;
+            })
+            .error(function(data, status, headers, config){
+                debugger;
+            });
         }
     };
     imagesService.getAll();

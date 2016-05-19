@@ -36,8 +36,8 @@ if($num>0){
 
         $data .= '{';
             $data .= '"id":"'  . $id . '",';
-            $data .= '"car_id":"'  . $region_id . '",';
-            $data .= '"url":"' . $name . '"';
+            $data .= '"car_id":"'  . $car_id . '",';
+            $data .= '"url":"' . $url . '"';
         $data .= '}';
 
         $data .= $x<$num ? ',' : ''; $x++; }

@@ -31,7 +31,7 @@ class Image{
     function readByCar(){
 
             // select all query
-             $query = "SELECT * " . $this->table_name . " WHERE car_id = ". $this->car_id .";";
+             $query = "SELECT * FROM " . $this->table_name . " WHERE car_id = ". $this->car_id .";";
 
             // prepare query statement
             $stmt = $this->conn->prepare( $query );
