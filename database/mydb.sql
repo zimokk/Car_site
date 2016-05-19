@@ -1,10 +1,30 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.1
+-- http://www.phpmyadmin.net
+--
+-- Хост: 127.0.0.1
+-- Время создания: Май 19 2016 г., 14:03
+-- Версия сервера: 5.5.25
+-- Версия PHP: 5.3.13
+
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+--
+-- База данных: `mydb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `bodies`
+--
 
 CREATE TABLE IF NOT EXISTS `bodies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -13,6 +33,10 @@ CREATE TABLE IF NOT EXISTS `bodies` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+
+--
+-- Дамп данных таблицы `bodies`
+--
 
 INSERT INTO `bodies` (`id`, `name`) VALUES
 (9, 'Кабриолет'),
@@ -26,6 +50,12 @@ INSERT INTO `bodies` (`id`, `name`) VALUES
 (4, 'Универсал'),
 (11, 'Фургон'),
 (5, 'Хетчбэк');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `cars`
+--
 
 CREATE TABLE IF NOT EXISTS `cars` (
   `idCars` int(11) NOT NULL AUTO_INCREMENT,
@@ -46,7 +76,22 @@ CREATE TABLE IF NOT EXISTS `cars` (
   KEY `fk_Cars_Cities_idx` (`city_id`),
   KEY `fk_Cars_Bodies_idx` (`body_id`),
   KEY `fk_Cars_Fuels_idx` (`fuel`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Дамп данных таблицы `cars`
+--
+
+INSERT INTO `cars` (`idCars`, `mark_id`, `model_id`, `cost`, `year`, `fuel`, `transmission`, `body_id`, `user_id`, `city_id`) VALUES
+(2, 4, 4, '100000', 2010, 1, 0, 1, 1, 1),
+(5, 2, 2, '200000', 2012, 2, 0, 9, 2, 1),
+(6, 3, 3, '300000', 2016, 2, 0, 9, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `cities`
+--
 
 CREATE TABLE IF NOT EXISTS `cities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -57,8 +102,18 @@ CREATE TABLE IF NOT EXISTS `cities` (
   KEY `fk_Cities_Regions_idx` (`region_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
+--
+-- Дамп данных таблицы `cities`
+--
+
 INSERT INTO `cities` (`id`, `region_id`, `name`) VALUES
 (1, 1, 'Минск');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `comments`
+--
 
 CREATE TABLE IF NOT EXISTS `comments` (
   `idnews` int(11) NOT NULL,
@@ -68,6 +123,12 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `fk_comments_Users1_idx` (`Users_idUsers`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `countries`
+--
+
 CREATE TABLE IF NOT EXISTS `countries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
@@ -76,9 +137,19 @@ CREATE TABLE IF NOT EXISTS `countries` (
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
+--
+-- Дамп данных таблицы `countries`
+--
+
 INSERT INTO `countries` (`id`, `name`) VALUES
 (1, 'Беларусь'),
 (2, 'Украина');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `fuels`
+--
 
 CREATE TABLE IF NOT EXISTS `fuels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -87,12 +158,22 @@ CREATE TABLE IF NOT EXISTS `fuels` (
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
+--
+-- Дамп данных таблицы `fuels`
+--
+
 INSERT INTO `fuels` (`id`, `name`) VALUES
 (1, 'Дизель'),
 (2, 'Газ'),
 (3, 'Бензин'),
 (4, 'Гибрид'),
 (5, 'Электро');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `images`
+--
 
 CREATE TABLE IF NOT EXISTS `images` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -101,7 +182,22 @@ CREATE TABLE IF NOT EXISTS `images` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_Images_Cars_idx` (`car_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Дамп данных таблицы `images`
+--
+
+INSERT INTO `images` (`id`, `car_id`, `url`) VALUES
+(3, 2, 'http://img-fotki.yandex.ru/get/5113/47407354.'),
+(4, 5, 'http://www.playcast.ru/uploads/2016/02/10/172'),
+(5, 6, 'http://img-fotki.yandex.ru/get/5703/valenta-m');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `marks`
+--
 
 CREATE TABLE IF NOT EXISTS `marks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -110,6 +206,10 @@ CREATE TABLE IF NOT EXISTS `marks` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=111 ;
+
+--
+-- Дамп данных таблицы `marks`
+--
 
 INSERT INTO `marks` (`id`, `name`) VALUES
 (1, 'Acura'),
@@ -222,6 +322,12 @@ INSERT INTO `marks` (`id`, `name`) VALUES
 (77, 'УАЗ'),
 (78, 'Урал');
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `models`
+--
+
 CREATE TABLE IF NOT EXISTS `models` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mark_id` int(11) NOT NULL,
@@ -230,6 +336,10 @@ CREATE TABLE IF NOT EXISTS `models` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_Models_Marks_idx` (`mark_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1498 ;
+
+--
+-- Дамп данных таблицы `models`
+--
 
 INSERT INTO `models` (`id`, `mark_id`, `name`) VALUES
 (1, 1, 'CL'),
@@ -1730,6 +1840,12 @@ INSERT INTO `models` (`id`, `mark_id`, `name`) VALUES
 (1496, 109, 'холодильник'),
 (1497, 109, 'цистерна');
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `parts`
+--
+
 CREATE TABLE IF NOT EXISTS `parts` (
   `idParts` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
@@ -1738,6 +1854,12 @@ CREATE TABLE IF NOT EXISTS `parts` (
   KEY `fk_Parts_Users1_idx` (`Users_idUsers`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `recall`
+--
+
 CREATE TABLE IF NOT EXISTS `recall` (
   `idrecall` int(11) NOT NULL AUTO_INCREMENT,
   `text` longtext,
@@ -1745,6 +1867,12 @@ CREATE TABLE IF NOT EXISTS `recall` (
   PRIMARY KEY (`idrecall`,`Users_idUsers`),
   KEY `fk_recall_Users1_idx` (`Users_idUsers`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `regions`
+--
 
 CREATE TABLE IF NOT EXISTS `regions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -1756,8 +1884,18 @@ CREATE TABLE IF NOT EXISTS `regions` (
   KEY `fk_Regions_Countries_idx` (`country_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
+--
+-- Дамп данных таблицы `regions`
+--
+
 INSERT INTO `regions` (`id`, `country_id`, `name`) VALUES
 (1, 1, 'Минская обл.');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
 
 CREATE TABLE IF NOT EXISTS `users` (
   `idUsers` int(11) NOT NULL AUTO_INCREMENT,
@@ -1770,9 +1908,24 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`idUsers`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   UNIQUE KEY `mail_UNIQUE` (`mail`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
+--
+-- Дамп данных таблицы `users`
+--
 
+INSERT INTO `users` (`idUsers`, `login`, `password`, `first_name`, `last_name`, `phone`, `mail`) VALUES
+(1, 'Dimka', 'Dimka228', 'Dmitriy', 'Alexandrovich', '8029228228228', 'petywok'),
+(2, 'Alexey', 'Alexey', 'Alexey', 'Alexey', 'Alexey', 'Alexey'),
+(3, 'Mikola', 'Mikola', 'Mikola', 'Mikola', 'Mikola', 'Mikola');
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `cars`
+--
 ALTER TABLE `cars`
   ADD CONSTRAINT `fk_Cars_Bodies` FOREIGN KEY (`body_id`) REFERENCES `bodies` (`id`),
   ADD CONSTRAINT `fk_Cars_Cities` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -1781,24 +1934,45 @@ ALTER TABLE `cars`
   ADD CONSTRAINT `fk_Cars_Models` FOREIGN KEY (`model_id`) REFERENCES `models` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Users` FOREIGN KEY (`user_id`) REFERENCES `users` (`idUsers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Ограничения внешнего ключа таблицы `cities`
+--
 ALTER TABLE `cities`
   ADD CONSTRAINT `fk_Cities_Regions` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`);
 
+--
+-- Ограничения внешнего ключа таблицы `comments`
+--
 ALTER TABLE `comments`
   ADD CONSTRAINT `fk_comments_Users1` FOREIGN KEY (`Users_idUsers`) REFERENCES `users` (`idUsers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Ограничения внешнего ключа таблицы `images`
+--
 ALTER TABLE `images`
   ADD CONSTRAINT `fk_Images_Cars` FOREIGN KEY (`car_id`) REFERENCES `cars` (`idCars`);
 
+--
+-- Ограничения внешнего ключа таблицы `models`
+--
 ALTER TABLE `models`
   ADD CONSTRAINT `fk_Models_Marks` FOREIGN KEY (`mark_id`) REFERENCES `marks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
+--
+-- Ограничения внешнего ключа таблицы `parts`
+--
 ALTER TABLE `parts`
   ADD CONSTRAINT `fk_Parts_Users1` FOREIGN KEY (`Users_idUsers`) REFERENCES `users` (`idUsers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Ограничения внешнего ключа таблицы `recall`
+--
 ALTER TABLE `recall`
   ADD CONSTRAINT `fk_recall_Users1` FOREIGN KEY (`Users_idUsers`) REFERENCES `users` (`idUsers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Ограничения внешнего ключа таблицы `regions`
+--
 ALTER TABLE `regions`
   ADD CONSTRAINT `fk_Regions_Countries` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`);
 
