@@ -3,9 +3,7 @@ app.factory('Cars',function($http){
         all: [],
         getAll: function() {
             $http.get("php/read_cars.php").success(function(response){
-                debugger;
                 angular.copy(response.cars,carsService.all);
-                debugger
             }).error(function(msg){
 
             });

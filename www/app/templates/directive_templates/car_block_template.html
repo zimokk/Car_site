@@ -7,15 +7,16 @@
             Имя машины
         </div>
         <div class="col-md-4" style="border: solid 1px black;height:125px">
-            Mark: {{car.mark_id}}
-            Model: {{car.model_id}}
-            Cost: {{car.cost}}
-            Year: {{car.year}}
-            Fuel: {{car.fuel_id}}
-            Transmission: {{car.transmission}}
+            Марка: {{mark_name}}<br>
+            Модель: {{model_name}}
+            Стоимость: {{car.cost}}
+            Год выпуска: {{car.year}}
+            Топливо: {{fuel_name}}
+            Transmission: <b ng-if="car.transmission == 1">Механическая</b>
+                            <b ng-if="car.transmission == 2">Автомат</b>
         </div>
         <div class="col-md-4" style="border: solid 1px black;height:125px">
-            ТЕКСТУЛЯ
+            {{car.description}}
             <div class="st">  <a href="#"> Подробнее</a> </div>
         </div>
 

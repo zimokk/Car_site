@@ -3,7 +3,6 @@ app.factory('Images',function($http){
         all: [],
         getAll: function() {
             $http.get("php/read_images.php").success(function(response){
-                debugger;
                 angular.copy(response.images,imagesService.all);
             }).error(function(msg){
 

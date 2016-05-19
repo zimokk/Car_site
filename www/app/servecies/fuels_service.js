@@ -7,6 +7,16 @@ app.factory('Fuels',function($http){
             }).error(function(msg){
 
             });
+        },
+        getById: function(id){
+            var item;
+            fuelsService.all.forEach(function(fuel,number){
+                if(fuel.id == id){
+                    item = fuel;
+                    return item;
+                }
+            },id);
+            return item;
         }
     };
     fuelsService.getAll();
