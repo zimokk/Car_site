@@ -1,5 +1,5 @@
-app.controller('BuyCarCtrl', ['$scope','Models','Marks', 'Countries', 'Regions','Cities','Bodies','Fuels','Images'
-                            ,function($scope,Models,Marks,Countries,Regions,Cities,Bodies,Fuels,Images) {
+app.controller('BuyCarCtrl', ['$scope','Models','Marks', 'Countries', 'Regions','Cities','Bodies','Fuels','Images','Cars'
+                            ,function($scope,Models,Marks,Countries,Regions,Cities,Bodies,Fuels,Images,Cars) {
     $scope.Models = Models.all;
     $scope.Marks = Marks.all;
     $scope.Countries = Countries.all;
@@ -8,6 +8,7 @@ app.controller('BuyCarCtrl', ['$scope','Models','Marks', 'Countries', 'Regions',
     $scope.Bodies = Bodies.all;
     $scope.Fuels = Fuels.all;
     $scope.Images = Images.all;
+    $scope.Cars = Cars.all;
     $scope.updateRegions = function () {
         Regions.getByCountry($scope.country);
     };
