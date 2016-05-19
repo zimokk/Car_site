@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-sm-7">
                             <select class="form-control" ng-model="fuel" required ng-disabled="!include_fuel">
-                                <option></option>
+                                <option ng-repeat="fuel in Fuels" value="{{fuel.id}}">{{fuel.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -79,7 +79,8 @@
                         </div>
                         <div class="col-sm-7">
                             <select class="form-control" ng-model="tramsmission" required ng-disabled="!include_transmission">
-                                <option></option>
+                                <option value="1">Механическая</option>
+                                <option value="2">Автомат</option>
                             </select>
                         </div>
                     </div>
@@ -186,32 +187,29 @@
     </div>
     <div class="col-md-8" style="border: solid 2px black;height:574px">
         <div class="col-md-12">
-     <div class="conainter" style="border: solid 3px red;height:180px;margin-top:15px">
-      <div class="row" >
-          <div class="col-md-3" style="height:175px;border: solid 1px black;margin-left:12px" >
-               
-                <img src="../../images/horse.jpg" width="300px"  height="170px" alt="horse">
-                
-          </div>
-          <div class="row">
-          <div class="col-md-8" align="center" style="border: solid 1px black;height:50px" >
-            Имя машины           
-          </div>
-          <div class="col-md-4" style="border: solid 1px black;height:125px">
-            <p align="center">ТЕКСТУЛЯ</p>  
-          </div>
-          <div class="col-md-4" style="border: solid 1px black;height:125px">
-              ТЕКСТУЛЯ
-              <div class="st">  <a href="#"> Подробнее</a> </div>
-          </div>
-          
-          </div>
-      </div>
-     
-      
-      
-     </div>
-     </div>
+            <div class="conainter" style="border: dotted 3px black;height:180px;margin-top:15px">
+                <div class="row" >
+                  <div class="col-md-3" style="height:175px;border: solid 1px black;margin-left:12px" >
+
+                        <img src="../../images/horse.jpg" width="300px"  height="170px" alt="horse">
+
+                  </div>
+                  <div class="row">
+                  <div class="col-md-8" align="center" style="border: solid 1px black;height:50px" >
+                    Имя машины
+                  </div>
+                  <div class="col-md-4" style="border: solid 1px black;height:125px">
+                    <p align="center">ТЕКСТУЛЯ</p>
+                  </div>
+                  <div class="col-md-4" style="border: solid 1px black;height:125px">
+                      ТЕКСТУЛЯ
+                      <div class="st">  <a href="#"> Подробнее</a> </div>
+                  </div>
+
+                  </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
