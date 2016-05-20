@@ -10,6 +10,22 @@ app.factory('Cars',['$http','Images',function($http, Images){
             }).error(function(msg){
 
             });
+        },
+        filterCars: function(mark_id,model_id,fuel_id,body_id,transmission) {
+            $http.post('php/commands/cars_commands/filtrationAllCars.php', {
+                'mark_id' : mark_id,
+                'model_id' : model_id,
+                'fuel_id' : fuel_id,
+                'body_id' : body_id,
+                'transmission' : transmission
+            }).success(function(response){
+                angular.copy(response.cars,carsService.all);
+                response.cars.forEach(function(car,number,cars){
+                    Images.getByCar(car.idCars);
+                })
+            }).error(function(msg){
+
+            });
         }
     };
     carsService.getAll();

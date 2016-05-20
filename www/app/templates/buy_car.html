@@ -2,13 +2,13 @@
 <body id="top">
 <div class="row">
     <div class="col-md-4" style="border: solid 2px black">
-        <form class="form-group">
+        <form class="form-group" ng-submit="filterCars()">
             <div class="container-fluid-special" >
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
                             <h2>Марка авто:</h2>
-                            <select class="smalllat form-control" ng-model="mark_id" required>
+                            <select class="smalllat form-control" ng-model="mark_id" ng-change="model_id = null" required>
                                 <option  ng-repeat="mark in Marks" value={{mark.id}}>{{mark.name}}</option>
                             </select>
                         </div>
@@ -42,13 +42,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_fuel" class="form-control">
+                            <input type="checkbox" ng-model="include_fuel" class="form-control" ng-change="fuel_id=null">
                         </div>
                         <div class="col-sm-4">
                             <h4><b>Двигатель:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="fuel" required ng-disabled="!include_fuel">
+                            <select class="form-control" ng-model="fuel_id" required ng-disabled="!include_fuel">
                                 <option ng-repeat="fuel in Fuels" value="{{fuel.id}}">{{fuel.name}}</option>
                             </select>
                         </div>
@@ -57,13 +57,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_body_type" class="form-control">
+                            <input type="checkbox" ng-model="include_body_id" class="form-control" ng-change="body_id = null">
                         </div>
                         <div class="col-sm-4">
                             <h4><b>Тип кузова:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="body_type" required ng-disabled="!include_body_type">
+                            <select class="form-control" ng-model="body_id" required ng-disabled="!include_body_id">
                                 <option ng-repeat="body in Bodies" value="{{body.id}}">{{body.name}}</option>
                             </select>
                         </div>
@@ -172,19 +172,14 @@
 </div>
 <div class="row" >
     <div class="col-md-4">
-       <a href="#top" onclick="window.scrollTo(0,0);return!1;">
-        <button class="btn btn-default" ng-repeat="mark in Marks" ng-click="changeMark(mark.id)">{{mark.name}}</button>
+        <a href="#top" onclick="window.scrollTo(0,0);return!1;">
+            <button class="btn btn-default" ng-repeat="mark in Marks" ng-click="changeMark(mark.id)">{{mark.name}}</button>
         </a>
     </div>
     <div class="col-md-8" style="border: solid 2px black;height:574px">
         <div class="col-md-12" ng-if="Bodies">
             <div class="conainter" style="border: dotted 3px black;height:180px;margin-top:15px" ng-repeat="car in Cars"
-                 ng-if="(car.mark_id == mark_id || !mark_id) &&
-                        (car.model_id == model_id || !model_id) &&
-                        ((include_year && car.year >= year_begin && car.year <= year_end) || !include_year) &&
-                        ((include_fuel && car.fuel_id == fuel) || !include_fuel) &&
-                        ((include_body_type && car.body_id == body_type) || !include_body_type) &&
-                        ((include_transmission && car.transmission == transmission) || !include_transmission) &&
+                 ng-if="((include_year && car.year >= year_begin && car.year <= year_end) || !include_year) &&
                         ((include_price && car.cost >= min_price && car.cost <= max_price) || !include_price) &&
                         ((include_city && car.city_id == city) || !include_city)" >
                 <car-block car="car"></car-block>

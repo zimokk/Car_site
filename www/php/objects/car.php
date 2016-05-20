@@ -36,39 +36,66 @@ class Car{
 
         return $stmt;
     }
-    function readWithFiltr ()
+
+    function readWithFilter ()
     {
         $helper;
-        if(!$mark_id.is_null())
+        if(empty($this->mark_id) and empty($this->model_id) and empty($this->fuel_id)
+            and empty($this->transmission) and empty($this->body_id)){
+                return $this->readAll();
+            }
+        if(!empty($this->mark_id))
         {
-            $helper = $helper . " Where mark_id = " . $mark_id ;
+            $helper = $helper.' WHERE ';
+            $helper = $helper . " mark_id = " . $this->mark_id ;
         }
-        if(!$model_id.is_null())
+        if(!empty($this->model_id))
         {
-            $helper = $helper . "and model_id = " . $model_id ;
+            if(!empty($helper)){
+                $helper = $helper.' and ';
+            }
+            else{
+                $helper = $helper.' WHERE ';
+            }
+            $helper = $helper . " model_id = " . $this->model_id ;
         }
-        if(!$cost.is_null())
+        if(!empty($this->fuel_id))
         {
-            $helper = $helper . "and cost = " . $cost ;
+            if(!empty($helper)){
+                $helper = $helper.' and ';
+            }
+            else{
+                $helper = $helper.' WHERE ';
+            }
+            $helper = $helper . " fuel_id = " . $this->fuel_id ;
         }
-        if(!$year.is_null())
+        if(!empty($this->body_id))
         {
-            $helper = $helper . "and year = " . $year ;
+            if(!empty($helper)){
+                $helper = $helper.' and ';
+            }
+            else{
+                $helper = $helper.' WHERE ';
+            }
+            $helper = $helper . " body_id = " . $this->body_id ;
         }
-        if(!$fuel_id.is_null())
+        if(!empty($this->transmission))
         {
-            $helper = $helper . "and fuel_id = " . $fuel_id ;
+            if(!empty($helper)){
+                $helper = $helper.' and ';
+            }
+            else{
+                $helper = $helper.' WHERE ';
+            }
+            $helper = $helper . " transmission = " . $this->transmission ;
         }
-        if(!$transmission.is_null())
-        {
-            $helper = $helper . "and transmission = " . $transmission ;
-        }
+        /*TRAnsmission
         if(!$body_id.is_null())
         {
-           $helper = $helper . "and body_id = " . $body_id ;
-        }     
+           $helper = $helper . " and body_id = " . $body_id ;
+        }   */
         
-        $sql = "SELECT * FROM " . $this->table_name .  $helper . ";" ; 
+        $sql = "SELECT * FROM " . $this->table_name . $helper . " ;" ;
         
         $query = $sql;
         $stmt = $this->conn->prepare( $query );

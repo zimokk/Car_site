@@ -13,14 +13,21 @@ $db = $database->getConnection();
 // initialize object
 $car = new Car($db);
 
+$data = json_decode(file_get_contents("php://input"));
+
+$car->mark_id = $data->mark_id;
+$car->model_id = $data->model_id;
+$car->fuel_id = $data->fuel_id;
+$car->body_id = $data->body_id;
+$car->transmission = $data->transmission;
 // query products
-$stmt = $car->readWithFiltr();
+$stmt = $car->readWithFilter();
 $num = $stmt->rowCount();
 
+$data="";
 // check if more than 0 record found
 if($num>0){
 
-    $data="";
     $x=1;
 
     // retrieve our table contents
