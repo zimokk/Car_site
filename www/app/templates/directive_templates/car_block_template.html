@@ -1,18 +1,18 @@
 <div class="row" ng-controller="carBlockController as main">
     <div class="col-md-3" style="height:175px;border: solid 1px black;margin-left:12px" >
-        <img src="../../images/horse.jpg" width="300px"  height="170px" alt="horse">
+        <!--<img ng-src="{{avatar}}" width="300px"  height="170px" alt="horse">-->
     </div>
     <div class="row">
         <div class="col-md-8" align="center" style="border: solid 1px black;height:50px" >
             Имя машины
         </div>
         <div class="col-md-4" style="border: solid 1px black;color: #4faab3; font-family: ‘Rouge Script’, cursive; font-weight: normal">
-           <strong> Марка:</strong> {{mark_name}}
-          <strong>  Модель:</strong> {{model_name}}<br>
+           <strong> Марка:</strong> <i ng-repeat="mark in Marks" ng-if="car.mark_id == mark.id">{{mark.name}}</i>
+          <strong>  Модель:</strong> <i ng-repeat="model in Models" ng-if="car.model_id == model.id">{{model.name}}</i><br>
            <strong> Стоимость:</strong> {{car.cost}}<br>
            <strong> Год выпуска:</strong> {{car.year}}<br>
-           <strong> Топливо:</strong> {{fuel_name}}<br>
-           <strong> Тип кузова:</strong> {{body_name}}<br>
+           <strong> Топливо:</strong> <i ng-repeat="fuel in Fuels" ng-if="car.fuel_id == fuel.id">{{fuel.name}}</i><br>
+           <strong> Тип кузова:</strong> <i ng-repeat="body in Bodies" ng-if="car.body_id == body.id">{{body.name}}</i><br>
            <strong> Коробка передач:</strong> <b ng-if="car.transmission == 1">Механическая</b>
                             <b ng-if="car.transmission == 2">Автомат</b>
         </div>

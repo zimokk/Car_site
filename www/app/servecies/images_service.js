@@ -10,14 +10,14 @@ app.factory('Images',function($http){
         },
         getByCar: function(car_id){
             $http.post('php/read_images_by_car.php', {
-                    'car_id' : car_id
-                })
-                .success(function(response){
-                    imagesService.all.push(response.images);
-                })
-                .error(function(data, status, headers, config){
+                'car_id' : car_id
+            })
+            .success(function(response){
+                imagesService.all.push(response.images);
+            })
+            .error(function(data, status, headers, config){
 
-                });
+            });
         },
         getAvatarByCar: function(car_id){
             var item;
@@ -29,10 +29,8 @@ app.factory('Images',function($http){
                 return item;
             })
             .error(function(data, status, headers, config){
-                debugger;
             });
         }
     };
-    imagesService.getAll();
     return imagesService;
 });
