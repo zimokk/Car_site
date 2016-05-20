@@ -31,11 +31,13 @@ class Image{
     function readByCar(){
 
             // select all query
-             $query = "SELECT * FROM " . $this->table_name . " WHERE car_id = ". $this->car_id .";";
+             $query = "SELECT * FROM " . $this->table_name . " WHERE car_id = ?;";
 
             // prepare query statement
             $stmt = $this->conn->prepare( $query );
 
+            // bind id of product to be updated
+            $stmt->bindParam(1, $this->car_id);
             // execute query
             $stmt->execute();
 

@@ -31,10 +31,12 @@ class Region{
     function readByCountry(){
 
             // select all query
-            $query = "SELECT * FROM " . $this->table_name . " WHERE country_id = ". $this->country_id .";";
+            $query = "SELECT * FROM " . $this->table_name . " WHERE country_id = ?;";
 
             // prepare query statement
             $stmt = $this->conn->prepare( $query );
+            // bind id of product to be updated
+            $stmt->bindParam(1, $this->country_id);
 
             // execute query
             $stmt->execute();

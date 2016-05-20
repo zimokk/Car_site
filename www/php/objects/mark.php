@@ -30,11 +30,13 @@ class Mark{
     function readOne(){
 
             // select all query
-            $query = "SELECT * FROM " . $this->table_name . " WHERE id = ". $this.id .";";
+            $query = "SELECT * FROM " . $this->table_name . " WHERE id = ;";
 
             // prepare query statement
             $stmt = $this->conn->prepare( $query );
 
+            // bind id of product to be updated
+            $stmt->bindParam(1, $this->id);
             // execute query
             $stmt->execute();
 

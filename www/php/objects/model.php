@@ -29,14 +29,15 @@ class Model{
         return $stmt;
     }
 
-    function readMark($markId){
+    function readMark(){
 
             // select all query
-            $query = "SELECT * " . $this->table_name . " WHERE mark_id = ".$markId.";";
+            $query = "SELECT * " . $this->table_name . " WHERE mark_id = ?;";
 
             // prepare query statement
             $stmt = $this->conn->prepare( $query );
-
+            // bind id of product to be updated
+            $stmt->bindParam(1, $this->mark_id);
             // execute query
             $stmt->execute();
 
