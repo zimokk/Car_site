@@ -20,8 +20,10 @@ $car->model_id = $data->model_id;
 $car->fuel_id = $data->fuel_id;
 $car->body_id = $data->body_id;
 $car->transmission = $data->transmission;
+$max_price = $data->max_price;
+$min_price = $data->min_price;
 // query products
-$stmt = $car->readWithFilter();
+$stmt = $car->readWithFilter($max_price,$min_price);
 $num = $stmt->rowCount();
 
 $data="";
@@ -40,6 +42,7 @@ if($num>0){
 
         $data .= '{';
             $data .= '"idCars":"'  . $idCars . '",';
+            $data .= '"description":"'  . $description . '",';
             $data .= '"mark_id":"'  . $mark_id . '",';
             $data .= '"model_id":"'  . $model_id . '",';
             $data .= '"cost":"'  . $cost . '",';

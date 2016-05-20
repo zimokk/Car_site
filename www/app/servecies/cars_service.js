@@ -11,13 +11,15 @@ app.factory('Cars',['$http','Images',function($http, Images){
 
             });
         },
-        filterCars: function(mark_id,model_id,fuel_id,body_id,transmission) {
+        filterCars: function(mark_id,model_id,fuel_id,body_id,transmission,max_price,min_price) {
             $http.post('php/commands/cars_commands/filtrationAllCars.php', {
                 'mark_id' : mark_id,
                 'model_id' : model_id,
                 'fuel_id' : fuel_id,
                 'body_id' : body_id,
-                'transmission' : transmission
+                'transmission' : transmission,
+                'max_price': max_price,
+                'min_price': min_price
             }).success(function(response){
                 angular.copy(response.cars,carsService.all);
                 response.cars.forEach(function(car,number,cars){

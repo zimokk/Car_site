@@ -37,7 +37,7 @@ class Car{
         return $stmt;
     }
 
-    function readWithFilter ()
+    function readWithFilter ($max_price,$min_price)
     {
         $helper;
         if(empty($this->mark_id) and empty($this->model_id) and empty($this->fuel_id)
@@ -88,6 +88,16 @@ class Car{
                 $helper = $helper.' WHERE ';
             }
             $helper = $helper . " transmission = " . $this->transmission ;
+        }
+        if(!empty($max_price) and !empty($min_price))
+        {
+            if(!empty($helper)){
+                $helper = $helper.' and ';
+            }
+            else{
+                $helper = $helper.' WHERE ';
+            }
+            $helper = $helper . " cost between " . $max_price . " and ". $min_price ;
         }
         /*TRAnsmission
         if(!$body_id.is_null())
