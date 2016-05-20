@@ -27,5 +27,18 @@ class Mark{
 
         return $stmt;
     }
+    function readOne(){
+
+            // select all query
+            $query = "SELECT * FROM " . $this->table_name . " WHERE id = ". $this.id .";";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare( $query );
+
+            // execute query
+            $stmt->execute();
+
+            return $stmt;
+        }
 }
 ?>

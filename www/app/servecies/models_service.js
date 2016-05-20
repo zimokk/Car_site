@@ -7,16 +7,6 @@ app.factory('Models',function($http){
             }).error(function(msg){
 
             });
-        },
-        getById: function(id){
-            var item;
-            modelsService.all.forEach(function(model,number){
-                if(model.id == id){
-                    item = model;
-                    return item;
-                }
-            },id);
-            return item;
         }
     };
     modelsService.getAll();

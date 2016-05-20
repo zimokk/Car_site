@@ -175,7 +175,7 @@
         <button class="btn btn-default" ng-repeat="mark in Marks" ng-click="changeMark(mark.id)">{{mark.name}}</button>
     </div>
     <div class="col-md-8" style="border: solid 2px black;height:574px">
-        <div class="col-md-12">
+        <div class="col-md-12" ng-if="Bodies">
             <div class="conainter" style="border: dotted 3px black;height:180px;margin-top:15px" ng-repeat="car in Cars"
                  ng-if="(car.mark_id == mark_id || !mark_id) &&
                         (car.model_id == model_id || !model_id) &&
