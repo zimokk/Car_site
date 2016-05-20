@@ -37,11 +37,12 @@ class Car{
         return $stmt;
     }
 
-    function readWithFilter ($max_price,$min_price)
+    function readWithFilter ($max_price,$min_price,$year_begin,$year_end)
     {
         $helper;
         if(empty($this->mark_id) and empty($this->model_id) and empty($this->fuel_id)
-            and empty($this->transmission) and empty($this->body_id)){
+            and empty($this->transmission) and empty($this->body_id) and empty($max_price)
+             and empty($min_price)  and empty($year_begin) and empty($year_end)){
                 return $this->readAll();
             }
         if(!empty($this->mark_id))
@@ -98,6 +99,16 @@ class Car{
                 $helper = $helper.' WHERE ';
             }
             $helper = $helper . " cost between " . $max_price . " and ". $min_price ;
+        }
+        if(!empty($year_begin) and !empty($year_end))
+        {
+            if(!empty($helper)){
+                $helper = $helper.' and ';
+            }
+            else{
+                $helper = $helper.' WHERE ';
+            }
+            $helper = $helper . " year between " . $year_begin . " and ". $year_end ;
         }
         /*TRAnsmission
         if(!$body_id.is_null())

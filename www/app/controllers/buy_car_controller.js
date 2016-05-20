@@ -24,6 +24,7 @@ app.controller('BuyCarCtrl', ['$scope','Models','Marks', 'Countries', 'Regions',
         $scope.filterCars();
     };
     $scope.filterCars = function(){
-        Cars.filterCars($scope.mark_id, $scope.model_id, $scope.fuel_id, $scope.body_id, $scope.transmission, $scope.max_price, $scope.min_price);
+        Cars.filterCars($scope.mark_id, $scope.model_id, $scope.fuel_id, $scope.body_id, $scope.transmission,
+            $scope.max_price, $scope.min_price, $scope.year_begin, $scope.year_end);
     }
 }]);

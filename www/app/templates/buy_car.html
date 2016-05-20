@@ -23,7 +23,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_year" class="form-control">
+                            <input type="checkbox" ng-model="include_year" class="form-control" ng-change="year_begin = year_end = null">
                         </div>
                         <div class="col-sm-2">
                             <h4><b>Год c </b></h4>
@@ -176,9 +176,7 @@
     <div class="col-md-8" style="border: solid 2px black;height:574px">
         <div class="col-md-12" ng-if="Bodies">
             <div class="conainter" style="border: dotted 3px black;height:180px;margin-top:15px" ng-repeat="car in Cars"
-                 ng-if="((include_year && car.year >= year_begin && car.year <= year_end) || !include_year) &&
-                        ((include_price && car.cost >= min_price && car.cost <= max_price) || !include_price) &&
-                        ((include_city && car.city_id == city) || !include_city)" >
+                 ng-if="((include_city && car.city_id == city) || !include_city)" >
                 <car-block car="car"></car-block>
             </div>
         </div>
