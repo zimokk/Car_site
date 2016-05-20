@@ -159,11 +159,11 @@
     </div> 
     <div class="col-md-8 row" style="height:660px;">
         <div class="col-md-12" style="height:660px; " ng-if="mark_id">
-            <button class="btn btn-default" ng-repeat="model in Models" ng-if="model.mark_id == mark_id"
+            
+            <button class="btn btn-default position-button" ng-repeat="model in Models" ng-if="model.mark_id == mark_id"
                     ng-click="changeModel(model.id)" style="width:150px;height:50px">              
                 <h4>{{model.name}}</h4> 
             </button>
-            <br>
         </div>
     </div>
 </div>
