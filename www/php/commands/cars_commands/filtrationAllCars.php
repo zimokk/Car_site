@@ -22,8 +22,10 @@ $car->body_id = $data->body_id;
 $car->transmission = $data->transmission;
 $max_price = $data->max_price;
 $min_price = $data->min_price;
+$year_end = $data->year_end;
+$year_begin = $data->year_begin;
 // query products
-$stmt = $car->readWithFilter($max_price,$min_price);
+$stmt = $car->readWithFilter($max_price,$min_price,$year_begin,$year_end);
 $num = $stmt->rowCount();
 
 $data="";
