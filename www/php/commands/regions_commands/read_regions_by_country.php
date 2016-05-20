@@ -3,18 +3,20 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
-include_once 'config/database.php';
-include_once 'objects/car.php';
+include_once '../../config/database.php';
+include_once '../../objects/region.php';
 
 // instantiate database and product object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$car = new Car($db);
+$region = new Region($db);
 
+$data = json_decode(file_get_contents("php://input"));
+$region->country_id = $data->country_id;
 // query products
-$stmt = $car->readAll();
+$stmt = $region->readByCountry();
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
@@ -32,22 +34,14 @@ if($num>0){
         extract($row);
 
         $data .= '{';
-            $data .= '"idCars":"'  . $idCars . '",';
-            $data .= '"description":"'  . $description . '",';
-            $data .= '"mark_id":"'  . $mark_id . '",';
-            $data .= '"model_id":"'  . $model_id . '",';
-            $data .= '"cost":"'  . $cost . '",';
-            $data .= '"year":"'  . $year . '",';
-            $data .= '"fuel_id":"'  . $fuel_id . '",';
-            $data .= '"transmission":"'  . $transmission . '",';
-            $data .= '"body_id":"' . $body_id . '",';
-            $data .= '"user_id":"'  . $user_id . '",';
-            $data .= '"city_id":"'  . $city_id . '"';
+            $data .= '"id":"'  . $id . '",';
+            $data .= '"country_id":"'  . $country_id . '",';
+            $data .= '"name":"' . $name . '"';
         $data .= '}';
 
         $data .= $x<$num ? ',' : ''; $x++; }
 }
 
 // json format output
-echo '{"cars":[' . $data . ']}';
+echo '{"regions":[' . $data . ']}';
 ?>

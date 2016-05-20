@@ -2,14 +2,14 @@ app.factory('Images',function($http){
     var imagesService = {
         all: [],
         getAll: function() {
-            $http.get("php/read_images.php").success(function(response){
+            $http.get("php/commands/images_commands/read_images.php").success(function(response){
                 angular.copy(response.images,imagesService.all);
             }).error(function(msg){
 
             });
         },
         getByCar: function(car_id){
-            $http.post('php/read_images_by_car.php', {
+            $http.post('php/commands/images_commands/read_images_by_car.php', {
                 'car_id' : car_id
             })
             .success(function(response){
@@ -21,7 +21,7 @@ app.factory('Images',function($http){
         },
         getAvatarByCar: function(car_id){
             var item;
-            $http.post('php/read_images_by_car.php', {
+            $http.post('php/commands/images_commands/read_images_by_car.php', {
                 'car_id' : car_id
             })
             .success(function(response){
