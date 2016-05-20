@@ -17,9 +17,11 @@ app.controller('BuyCarCtrl', ['$scope','Models','Marks', 'Countries', 'Regions',
     };
     $scope.changeMark = function(mark_id){
         $scope.mark_id = mark_id;
+        $scope.filterCars();
     };
     $scope.changeModel = function(model_id){
         $scope.model_id = model_id;
+        $scope.filterCars();
     };
     $scope.filterCars = function(){
         Cars.filterCars($scope.mark_id, $scope.model_id, $scope.fuel_id, $scope.body_id, $scope.transmission);
