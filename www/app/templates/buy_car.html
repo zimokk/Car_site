@@ -156,17 +156,14 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div> 
     <div class="col-md-8 row" style="height:660px;">
-        <div class="col-md-4" style="height:100%; overflow-y: scroll;" ng-if="mark_id">
-           
+        <div class="col-md-12" style="height:660px; " ng-if="mark_id">
             <button class="btn btn-default" ng-repeat="model in Models" ng-if="model.mark_id == mark_id"
-                    ng-click="changeModel(model.id)">
-                <h4>{{model.name}}</h4>
+                    ng-click="changeModel(model.id)" style="width:150px;height:50px">              
+                <h4>{{model.name}}</h4> 
             </button>
-        </div>
-        <div class="col-md-8">
-            Возможно реклама
+            <br>
         </div>
     </div>
 </div>
