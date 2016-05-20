@@ -3,7 +3,9 @@ app.factory('Images',function($http){
         all: [],
         getAll: function() {
             $http.get("php/commands/images_commands/read_images.php").success(function(response){
-                angular.copy(response.images,imagesService.all);
+                response.images.forEach(function(image,number,images){
+                    imagesService.all[image.car_id] = image.url;
+                });
             }).error(function(msg){
 
             });
@@ -13,22 +15,12 @@ app.factory('Images',function($http){
                 'car_id' : car_id
             })
             .success(function(response){
-                imagesService.all.push(response.images);
+                response.images.forEach(function(image,number,images){
+                    imagesService.all[image.car_id] = image.url;
+                });
             })
             .error(function(data, status, headers, config){
 
-            });
-        },
-        getAvatarByCar: function(car_id){
-            var item;
-            $http.post('php/commands/images_commands/read_images_by_car.php', {
-                'car_id' : car_id
-            })
-            .success(function(response){
-                item = response.images[0].url;
-                return item;
-            })
-            .error(function(data, status, headers, config){
             });
         }
     };

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 19 2016 г., 21:32
+-- Время создания: Май 20 2016 г., 21:31
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -179,7 +179,7 @@ INSERT INTO `fuels` (`id`, `name`) VALUES
 CREATE TABLE IF NOT EXISTS `images` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `car_id` int(11) NOT NULL,
-  `url` varchar(45) NOT NULL,
+  `url` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_Images_Cars_idx` (`car_id`)
@@ -190,9 +190,9 @@ CREATE TABLE IF NOT EXISTS `images` (
 --
 
 INSERT INTO `images` (`id`, `car_id`, `url`) VALUES
-(3, 2, 'http://img-fotki.yandex.ru/get/5113/47407354.'),
-(4, 5, 'http://www.playcast.ru/uploads/2016/02/10/172'),
-(5, 6, 'http://img-fotki.yandex.ru/get/5703/valenta-m');
+(3, 2, 'https://i.ytimg.com/vi/NUhfmSfb9oY/maxresdefault.jpg'),
+(4, 5, 'http://www.jaguar.com/Images/XJ_Drive_or_driven_Hero1_Mobile_480x224_tcm76-210876_mobile_480x224.jpg'),
+(5, 6, 'http://www.drivesrt.com/assets/images/2015/charger/hellcat/hero-panel/phone-15-ld-charger-hero.jpg');
 
 -- --------------------------------------------------------
 

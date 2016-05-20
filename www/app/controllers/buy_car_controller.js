@@ -20,5 +20,5 @@ app.controller('BuyCarCtrl', ['$scope','Models','Marks', 'Countries', 'Regions',
     };
     $scope.changeModel = function(model_id){
         $scope.model_id = model_id;
-    }
+    };
 }]);
