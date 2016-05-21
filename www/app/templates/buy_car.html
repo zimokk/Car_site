@@ -88,13 +88,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_city" class="form-control">
+                            <input type="checkbox" ng-model="include_city" class="form-control" ng-change = "country_id = region_id = city_id = null">
                         </div>
                         <div class="col-sm-4">
                             <h4><b>Страна:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="country" ng-change="updateRegions()" ng-disabled="!include_city">
+                            <select class="form-control" ng-model="country_id" ng-change="updateRegions()" ng-disabled="!include_city">
                                 <option ng-repeat="country in Countries" value="{{country.id}}">{{country.name}}</option>
                             </select>
                         </div>
@@ -108,7 +108,7 @@
                             <h4><b>Область:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="region" ng-change="updateCities()" ng-disabled="!include_city">
+                            <select class="form-control" ng-model="region_id" ng-change="updateCities()" ng-disabled="!include_city">
                                 <option ng-repeat="region in Regions" value="{{region.id}}">{{region.name}}</option>
                             </select>
                         </div>
@@ -122,7 +122,7 @@
                             <h4><b>Город:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-disabled="!include_city" ng-model="city">
+                            <select class="form-control" ng-disabled="!include_city" ng-model="city_id">
                                 <option ng-repeat="city in Cities" value="{{city.id}}">{{city.name}}</option>
                             </select>
                         </div>
@@ -175,8 +175,7 @@
     </div>
     <div class="col-md-8" style="border: solid 2px black;height:574px">
         <div class="col-md-12" ng-if="Bodies">
-            <div class="conainter" style="border: dotted 3px black;height:180px;margin-top:15px" ng-repeat="car in Cars"
-                 ng-if="((include_city && car.city_id == city) || !include_city)" >
+            <div class="conainter" style="border: dotted 3px black;height:180px;margin-top:15px" ng-repeat="car in Cars">
                 <car-block car="car"></car-block>
             </div>
         </div>
