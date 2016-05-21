@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 20 2016 г., 21:31
+-- Время создания: Май 21 2016 г., 22:16
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -66,9 +66,10 @@ CREATE TABLE IF NOT EXISTS `cars` (
   `year` int(11) DEFAULT NULL,
   `fuel_id` int(11) NOT NULL,
   `transmission` int(11) NOT NULL DEFAULT '1',
-  `body_id` int(11) DEFAULT NULL,
+  `body_id` int(11) DEFAULT '1',
   `user_id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL,
+  `creation_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idCars`),
   UNIQUE KEY `idCars_UNIQUE` (`idCars`),
   KEY `fk_Cars_Users_idx` (`user_id`),
@@ -77,16 +78,17 @@ CREATE TABLE IF NOT EXISTS `cars` (
   KEY `fk_Cars_Cities_idx` (`city_id`),
   KEY `fk_Cars_Bodies_idx` (`body_id`),
   KEY `fk_Cars_Fuels_idx` (`fuel_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `cars`
 --
 
-INSERT INTO `cars` (`idCars`, `description`, `mark_id`, `model_id`, `cost`, `year`, `fuel_id`, `transmission`, `body_id`, `user_id`, `city_id`) VALUES
-(2, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 4, 71, '100000', 2010, 1, 1, 1, 1, 1),
-(5, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 2, 27, '200000', 2012, 2, 2, 9, 2, 1),
-(6, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 3, 61, '300000', 2016, 2, 1, 9, 2, 1);
+INSERT INTO `cars` (`idCars`, `description`, `mark_id`, `model_id`, `cost`, `year`, `fuel_id`, `transmission`, `body_id`, `user_id`, `city_id`, `creation_time`) VALUES
+(2, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 4, 71, '100000', 2010, 1, 1, 1, 1, 2, NULL),
+(5, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 2, 27, '200000', 2012, 2, 2, 9, 2, 3, NULL),
+(6, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 3, 61, '300000', 2016, 2, 1, 9, 2, 1, NULL),
+(7, 'Норм неплохо ло', 3, 60, '25500', 1999, 1, 2, 5, 1, 2, '2016-05-21 20:11:50');
 
 -- --------------------------------------------------------
 
@@ -101,14 +103,16 @@ CREATE TABLE IF NOT EXISTS `cities` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_Cities_Regions_idx` (`region_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `cities`
 --
 
 INSERT INTO `cities` (`id`, `region_id`, `name`) VALUES
-(1, 1, 'Минск');
+(1, 1, 'Минск'),
+(2, 2, 'Ильичёвск'),
+(3, 1, 'Молодечно');
 
 -- --------------------------------------------------------
 
@@ -1883,14 +1887,15 @@ CREATE TABLE IF NOT EXISTS `regions` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `fk_Regions_Countries_idx` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `regions`
 --
 
 INSERT INTO `regions` (`id`, `country_id`, `name`) VALUES
-(1, 1, 'Минская обл.');
+(1, 1, 'Минская обл.'),
+(2, 2, 'Одесская обл.');
 
 -- --------------------------------------------------------
 
@@ -1928,7 +1933,6 @@ INSERT INTO `users` (`idUsers`, `login`, `password`, `first_name`, `last_name`, 
 -- Ограничения внешнего ключа таблицы `cars`
 --
 ALTER TABLE `cars`
-  ADD CONSTRAINT `fk_Cars_Bodies` FOREIGN KEY (`body_id`) REFERENCES `bodies` (`id`),
   ADD CONSTRAINT `fk_Cars_Cities` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Fuels` FOREIGN KEY (`fuel_id`) REFERENCES `fuels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Marks` FOREIGN KEY (`mark_id`) REFERENCES `marks` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
