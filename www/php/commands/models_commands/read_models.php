@@ -17,10 +17,11 @@ $model = new Model($db);
 $stmt = $model->readAll();
 $num = $stmt->rowCount();
 
+$data="";
+
 // check if more than 0 record found
 if($num>0){
 
-    $data="";
     $x=1;
 
     // retrieve our table contents

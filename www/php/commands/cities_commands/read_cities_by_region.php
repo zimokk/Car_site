@@ -20,10 +20,11 @@ $city->region_id = $data->region_id;
 $stmt = $city->readByRegion();
 $num = $stmt->rowCount();
 
+$data="";
+
 // check if more than 0 record found
 if($num>0){
 
-    $data="";
     $x=1;
 
     // retrieve our table contents

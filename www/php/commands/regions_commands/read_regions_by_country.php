@@ -19,10 +19,11 @@ $region->country_id = $data->country_id;
 $stmt = $region->readByCountry();
 $num = $stmt->rowCount();
 
+$data="";
+
 // check if more than 0 record found
 if($num>0){
 
-    $data="";
     $x=1;
 
     // retrieve our table contents

@@ -15,9 +15,10 @@ $country = new Country($db);
 $stmt = $country->readAll();
 $num = $stmt->rowCount();
 
+$data="";
+
 if($num>0){
 
-    $data="";
     $x=1;
 
     // retrieve our table contents

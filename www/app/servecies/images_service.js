@@ -20,7 +20,6 @@ app.factory('Images',function($http){
                 });
             })
             .error(function(data, status, headers, config){
-
             });
         }
     };
