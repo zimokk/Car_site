@@ -9,7 +9,7 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'app/templates/main.html',
         controller: 'MainCtrl'
       })
-      .when('/report', {
+      .when('/buy_car', {
         templateUrl: 'app/templates/buy_car.html',
         controller: 'BuyCarCtrl'
       })
