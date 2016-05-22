@@ -17,10 +17,11 @@ $car = new Car($db);
 $stmt = $car->readAll();
 $num = $stmt->rowCount();
 
+$data="";
+
 // check if more than 0 record found
 if($num>0){
 
-    $data="";
     $x=1;
 
     // retrieve our table contents
@@ -42,7 +43,8 @@ if($num>0){
             $data .= '"transmission":"'  . $transmission . '",';
             $data .= '"body_id":"' . $body_id . '",';
             $data .= '"user_id":"'  . $user_id . '",';
-            $data .= '"city_id":"'  . $city_id . '"';
+            $data .= '"city_id":"'  . $city_id . '",';
+            $data .= '"creation_time":"'  . $creation_time . '"';
         $data .= '}';
 
         $data .= $x<$num ? ',' : ''; $x++; }

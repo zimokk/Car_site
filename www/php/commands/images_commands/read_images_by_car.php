@@ -20,10 +20,10 @@ $image->car_id = $data->car_id;
 $stmt = $image->readByCar();
 $num = $stmt->rowCount();
 
+$data="";
 // check if more than 0 record found
 if($num>0){
 
-    $data="";
     $x=1;
 
     // retrieve our table contents
@@ -33,16 +33,15 @@ if($num>0){
         // this will make $row['name'] to
         // just $name only
         extract($row);
-
         $data .= '{';
             $data .= '"id":"'  . $id . '",';
             $data .= '"car_id":"'  . $car_id . '",';
             $data .= '"url":"' . $url . '"';
         $data .= '}';
 
-        $data .= $x<$num ? ',' : ''; $x++; }
+        $data .= $x<$num ? ',' : ''; $x++;
+    }
 }
-
 // json format output
 echo '{"images":[' . $data . ']}';
 ?>
