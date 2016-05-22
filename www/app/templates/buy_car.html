@@ -176,7 +176,7 @@
     <div class="col-md-8" style="border: solid 2px black;height:auto">
         <div class="col-md-12" ng-if="Bodies">
            <div class="row"> 
-               <div class="col-md-3">
+               <div class="col-md-2">
                </div>
                <div class="col-md-3" style="height:auto;font-size:150%">
                    <p align="right"> Сортировать по :</p>
@@ -190,8 +190,9 @@
                <div class="col-md-2" >
                    <button class="btn btn-info"style="width:190px;height:30px;"><strong> год выпуска</strong> </button>
                </div>
+               <div class="col-md-1"></div>
            </div>
-            <div class="conainter" style="border: dotted 3px black;height:180px;margin-top:15px" ng-repeat="car in Cars">
+            <div class="conainter" style="height:180px;margin-top:15px" ng-repeat="car in Cars">
                 <car-block car="car"></car-block>
             </div>
         </div>
