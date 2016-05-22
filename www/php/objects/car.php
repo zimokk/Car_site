@@ -18,6 +18,7 @@ class Car{
     public $city_id;
     public $region_id;
     public $country_id;
+    public $creation_time;
 
     // constructor with $db as database connection
     public function __construct($db){
