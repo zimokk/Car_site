@@ -26,5 +26,14 @@ app.controller('BuyCarCtrl', ['$scope','Models','Marks', 'Countries', 'Regions',
     $scope.filterCars = function(){
         Cars.filterCars($scope.mark_id, $scope.model_id, $scope.fuel_id, $scope.body_id, $scope.transmission,
             $scope.max_price, $scope.min_price, $scope.year_begin, $scope.year_end, $scope.country_id, $scope.region_id, $scope.city_id);
+    };
+    $scope.sortByCost = function(){
+        Cars.sortByCost();
+    };
+    $scope.sortByYear = function(){
+        Cars.sortByYear();
+    };
+    $scope.sortByCreation = function(){
+        Cars.sortByCreation();
     }
 }]);
