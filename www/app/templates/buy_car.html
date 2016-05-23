@@ -3,12 +3,12 @@
 <div class="row">
     <div class="col-md-4" style="border: solid 2px black">
         <form class="form-group" ng-submit="filterCars()">
-            <div class="container-fluid-special" >
+            <div>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
                             <h2>Марка авто:</h2>
-                            <select class="smalllat form-control" ng-model="mark_id" ng-change="model_id = null" required>
+                            <select class="smalllat form-control" ng-model="mark_id" ng-change="model_id = null;" required>
                                 <option  ng-repeat="mark in Marks" value={{mark.id}}>{{mark.name}}</option>
                             </select>
                         </div>
@@ -19,7 +19,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
@@ -38,7 +38,7 @@
                             <input type="number" ng-model="year_end" min={{year_begin}} max="2016" class="form-control" required ng-disabled="!include_year">
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
@@ -53,7 +53,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
@@ -68,7 +68,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
@@ -84,7 +84,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
@@ -99,7 +99,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
@@ -113,7 +113,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
@@ -127,7 +127,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
@@ -146,14 +146,20 @@
                             <input type="number" min={{min_price}} ng-model="max_price" class="form-control" ng-disabled="!include_price" required>
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="container-fluid"><p></p>
                     <b class="biglat">Обмен </b>
                     <input type="checkbox" class="large" name="trade"/>
                 </div>
-                <div class="container-fluid"><p></p>
-                    <input type="submit" value="Найти" class="btn btn-info" style="width:190px;height:40px">
-                    <input type="submit" value="Очистить фильтр" class="btn btn-danger" style="width:190px;height:40px;margin:0px  0px 0px 150px">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="submit" value="Найти" class=" form-control btn btn-info">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" value="Очистить фильтр" class="form-control btn btn-danger" ng-click="cleanFilter();">
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
@@ -170,8 +176,18 @@
 <div class="row" >
     <div class="col-md-4">
         <a href="#top" onclick="window.scrollTo(0,0);return!1;">
-            <button class="btn btn-default" ng-repeat="mark in Marks" ng-click="changeMark(mark.id)">{{mark.name}}</button>
+            <button class="btn btn-default col-sm-4" ng-repeat="mark in Marks.slice(0,78)" ng-click="changeMark(mark.id)">{{mark.name}}</button>
         </a>
+        <div class="row md-padding">
+            <div class="col-sm-4 bg-primary" style="text-align: center">
+                <h4>Другие</h4>
+            </div>
+            <div class="col-sm-8" style="top: -20px">
+                <md-select ng-model="mark_id" ng-change="model_id = null">
+                    <md-option ng-repeat="mark in Marks.slice(78)" value={{mark.id}}><h4>{{mark.name}}</h4></md-option>
+                </md-select>
+            </div>
+        </div>
     </div>
     <div class="col-md-8" style="border: solid 2px black;height:auto">
         <div class="col-md-12" ng-if="Bodies">

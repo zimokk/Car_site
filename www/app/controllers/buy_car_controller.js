@@ -35,5 +35,18 @@ app.controller('BuyCarCtrl', ['$scope','Models','Marks', 'Countries', 'Regions',
     };
     $scope.sortByCreation = function(){
         Cars.sortByCreation();
+    };
+    $scope.cleanFilter = function(){
+        $scope.mark_id = null;
+        $scope.model_id = null;
+
+        $scope.include_year = false;
+        $scope.include_fuel = false;
+        $scope.include_body_id = false;
+        $scope.include_transmission = false;
+        $scope.include_city = false;
+        $scope.include_price = false;
+        $scope.fuel_id = $scope.body_id = $scope.transmission = $scope.max_price = $scope.min_price =
+            $scope.year_begin = $scope.year_end = $scope.country_id = $scope.region_id = $scope.city_id = null;
     }
 }]);

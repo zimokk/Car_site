@@ -17,7 +17,7 @@ class Mark{
     function readAll(){
 
         // select all query
-        $query = "SELECT * FROM " . $this->table_name . ";";
+        $query = "SELECT * FROM " . $this->table_name . " order by id;";
 
         // prepare query statement
         $stmt = $this->conn->prepare( $query );
