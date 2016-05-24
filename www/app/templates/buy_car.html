@@ -166,7 +166,7 @@
     </div> 
     <div class="col-md-8 row" style="height:660px;">
         <div class="col-md-12 models_list_division" ng-if="mark_id">
-            <button class="btn btn-default position-button" ng-repeat="model in Models" ng-if="model.mark_id == mark_id"
+            <button class="btn btn-default position-button" ng-repeat="model in Models | where:{ mark_id: mark_id }"
                     ng-click="changeModel(model.id)" style="width:190px;height:60px">
                 <h4>{{model.name}}</h4>
             </button>
