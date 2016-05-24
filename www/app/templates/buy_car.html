@@ -15,7 +15,9 @@
                         <div class="col-sm-6">
                             <h2>Модель:</h2>
                             <select class="form-control" ng-model="model_id" required>
-                                <option ng-repeat="model in Models" value={{model.id}} ng-if=" model.mark_id == mark_id">{{model.name}}</option>
+                                <option ng-repeat="model in Models| where:{ mark_id: mark_id }" value={{model.id}}>
+                                    {{model.name}}
+                                </option>
                             </select>
                         </div>
                     </div>
