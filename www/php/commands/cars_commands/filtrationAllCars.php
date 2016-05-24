@@ -59,7 +59,8 @@ if($num>0){
             $data .= '"user_id":"'  . $user_id . '",';
             $data .= '"city_id":"'  . $city_id . '",';
             $data .= '"region_id":"'  . $region_id . '",';
-            $data .= '"country_id":"'  . $country_id . '"';
+            $data .= '"country_id":"'  . $country_id . '",';
+            $data .= '"creation_time":"'  . $creation_time . '"';
         $data .= '}';
 
         $data .= $x<$num ? ',' : ''; $x++; }
