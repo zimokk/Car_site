@@ -1,6 +1,8 @@
 var app = angular.module('myApp', [
     'ngRoute',
-    'ngMaterial'
+    'ngMaterial',
+    'angular-loading-bar',
+    'ngAnimate'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
