@@ -175,8 +175,17 @@
 </div>
 <div class="row" >
     <div class="col-md-4">
-        <a href="#top" onclick="window.scrollTo(0,0);return!1;">
-            <button class="btn btn-default col-sm-4" ng-repeat="mark in Marks.slice(0,78)" ng-click="changeMark(mark.id)">{{mark.name}}</button>
+        <a href="#top">
+            <div class="row" ng-repeat="(letter,marks) in Marks.slice(0,78)| groupBy: 'name[0]'" style="border: solid slategray 1px">
+                <div class="col-sm-3" style="text-align: center">
+                    <h1>{{letter}}</h1>
+                </div>
+                <div class="col-sm-9">
+                    <button class="btn btn-default col-sm-3" ng-repeat="mark in marks" onclick="window.scrollTo(0,0);return!1;"
+                            ng-click="changeMark(mark.id)">{{mark.name}}
+                    </button>
+                </div>
+            </div>
         </a>
         <div class="row md-padding">
             <div class="col-sm-4 bg-primary" style="text-align: center">
