@@ -25,5 +25,12 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'app/templates/sell_car.html',
             controller: 'SellCarCtrl'
         })
+        .when('/car_info', {
+          templateUrl: 'app/templates/car_info.html',
+          controller: 'CarInfoCtrl',
+          resolve:{
+              //get images for current car
+          }
+        })
       .otherwise({redirectTo: '/index'});
 }]);
