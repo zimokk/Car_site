@@ -25,11 +25,13 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'app/templates/sell_car.html',
             controller: 'SellCarCtrl'
         })
-        .when('/car_info', {
+        .when('/car_info/:id', {
           templateUrl: 'app/templates/car_info.html',
           controller: 'CarInfoCtrl',
           resolve:{
-              //get images for current car
+              cars: ['Cars', '$route', function(Cars,$route) {
+                return Cars.setCurrentCar($route.current.params.id);
+              }]
           }
         })
       .otherwise({redirectTo: '/index'});

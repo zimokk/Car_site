@@ -19,7 +19,11 @@
         <div class="col-md-4" style="border: solid 1px black;height:122px;color: #4faab3; font-family: ‘Rouge Script’, cursive; font-weight: normal">
             {{car.description}}
             <div class="st">
-                <a href="#/car_info">Подробнее</a>
+                <a href="#/car_info" ng-href="#/car_info/{{car.idCars}}">
+                    <button class="btn btn-default">
+                        Подробнее
+                    </button>
+                </a>
             </div>
         </div>
 

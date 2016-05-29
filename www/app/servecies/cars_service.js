@@ -1,6 +1,7 @@
 app.factory('Cars',['$http','Images',function($http, Images){
     var carsService = {
         all: [],
+        current:{},
         costSorting:0,
         creationSorting:0,
         yearSorting:0,
@@ -86,6 +87,15 @@ app.factory('Cars',['$http','Images',function($http, Images){
                 };
             }
             carsService.all.sort(creationSorting);
+        },
+        setCurrentCar: function(idCars){
+            $http.post('php/commands/cars_commands/read_car.php', {
+                'idCars' : idCars
+            }).success(function(response){
+                carsService.current = response.cars[0];
+            }).error(function(msg){
+
+            });
         }
     };
     carsService.getAll();
