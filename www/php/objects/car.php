@@ -25,7 +25,6 @@ class Car{
         $this->conn = $db;
     }
 
-    // read marks
     function readAll(){
 
         // select all query
@@ -34,6 +33,19 @@ class Car{
         // prepare query statement
         $stmt = $this->conn->prepare( $query );
 
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    function readOne(){
+        $query = "SELECT * FROM " . $this->table_name . " WHERE idCars = ?;";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        $stmt->bindParam(1, $this->idCars);
         // execute query
         $stmt->execute();
 
