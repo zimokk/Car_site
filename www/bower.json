@@ -12,6 +12,7 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "angular-timeline": "^1.6.2",
-    "cloudinary_ng": "^1.0.0"
+    "cloudinary_ng": "^1.0.0",
+    "ng-file-upload": "^12.0.4"
   }
 }
