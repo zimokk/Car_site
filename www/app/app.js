@@ -3,7 +3,8 @@ var app = angular.module('myApp', [
     'ngMaterial',
     'angular-loading-bar',
     'ngAnimate',
-    'angular.filter'
+    'angular.filter',
+    'ngFileUpload'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {

@@ -1,4 +1,4 @@
-app.controller('SellCarCtrl', ['$scope'
-    ,function($scope) {
+app.controller('SellCarCtrl', ['$scope','Upload'
+    ,function($scope,Upload) {
 
 }]);
