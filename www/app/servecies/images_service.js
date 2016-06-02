@@ -21,6 +21,13 @@ app.factory('Images',function($http){
             })
             .error(function(data, status, headers, config){
             });
+        },
+        flush: function(){
+            imagesService.all = [];
+        },
+        addUploaded: function(imageUrl){
+            debugger
+            imagesService.all.push({url: imageUrl});
         }
     };
     return imagesService;

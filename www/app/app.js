@@ -24,7 +24,12 @@ app.config(['$routeProvider', function($routeProvider) {
         })
         .when('/sell_car', {
             templateUrl: 'app/templates/sell_car.html',
-            controller: 'SellCarCtrl'
+            controller: 'SellCarCtrl',
+            resolve:{
+                images: ['Images', function(Images) {
+                    return Images.flush();
+                }]
+            }
         })
         .when('/car_info/:id', {
           templateUrl: 'app/templates/car_info.html',
