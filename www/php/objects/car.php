@@ -92,10 +92,26 @@ class Car{
             $helper = $helper.' and ';
             $helper = $helper . " cost between " . $max_price . " and ". $min_price ;
         }
+        else if(!empty($max_price)){
+            $helper = $helper.' and ';
+            $helper = $helper . " cost < " . $max_price;
+        }
+        else if(!empty($min_price)){
+            $helper = $helper.' and ';
+            $helper = $helper . " cost > " . $min_price;
+        }
         if(!empty($year_begin) and !empty($year_end))
         {
             $helper = $helper.' and ';
             $helper = $helper . " year between " . $year_begin . " and ". $year_end ;
+        }
+        else if(!empty($year_begin)){
+            $helper = $helper.' and ';
+            $helper = $helper . " year > " . $year_begin;
+        }
+        else if(!empty($year_end)){
+            $helper = $helper.' and ';
+            $helper = $helper . " year < " . $year_end;
         }
         /*TRAnsmission
          */

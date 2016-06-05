@@ -25,32 +25,32 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_year" class="form-control" ng-change="year_begin = year_end = null">
+
                         </div>
                         <div class="col-sm-2">
                             <h4><b>Год c </b></h4>
                         </div>
                         <div class="col-sm-4">
-                            <input type="number" ng-model="year_begin" min="1970" max="2016" class="form-control" required ng-disabled="!include_year">
+                            <input type="number" ng-model="year_begin" min="1970" max="2016" class="form-control">
                         </div>
                         <div class="col-sm-1">
                             <h4><b>по</b></h4>
                         </div>
                         <div class="col-sm-4">
-                            <input type="number" ng-model="year_end" min={{year_begin}} max="2016" class="form-control" required ng-disabled="!include_year">
+                            <input type="number" ng-model="year_end" min={{year_begin}} max="2016" class="form-control">
                         </div>
                     </div>
                 </div><br>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_fuel" class="form-control" ng-change="fuel_id = null">
+
                         </div>
                         <div class="col-sm-4">
                             <h4><b>Двигатель:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="fuel_id" required ng-disabled="!include_fuel">
+                            <select class="form-control" ng-model="fuel_id">
                                 <option ng-repeat="fuel in Fuels" value="{{fuel.id}}">{{fuel.name}}</option>
                             </select>
                         </div>
@@ -59,13 +59,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_body_id" class="form-control" ng-change="body_id = null">
+
                         </div>
                         <div class="col-sm-4">
                             <h4><b>Тип кузова:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="body_id" required ng-disabled="!include_body_id">
+                            <select class="form-control" ng-model="body_id" required>
                                 <option ng-repeat="body in Bodies" value="{{body.id}}">{{body.name}}</option>
                             </select>
                         </div>
@@ -74,13 +74,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_transmission" class="form-control" ng-change="transmission = null">
+
                         </div>
                         <div class="col-sm-4">
                             <h4><b>Коробка передач:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="transmission" required ng-disabled="!include_transmission">
+                            <select class="form-control" ng-model="transmission">
                                 <option value="1">Механическая</option>
                                 <option value="2">Автомат</option>
                             </select>
@@ -90,13 +90,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_city" class="form-control" ng-change = "country_id = region_id = city_id = null">
-                        </div>
+
+                         </div>
                         <div class="col-sm-4">
                             <h4><b>Страна:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="country_id" ng-change="updateRegions()" ng-disabled="!include_city">
+                            <select class="form-control" ng-model="country_id" ng-change="updateRegions()">
                                 <option ng-repeat="country in Countries" value="{{country.id}}">{{country.name}}</option>
                             </select>
                         </div>
@@ -110,7 +110,7 @@
                             <h4><b>Область:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-model="region_id" ng-change="updateCities()" ng-disabled="!include_city">
+                            <select class="form-control" ng-model="region_id" ng-change="updateCities()">
                                 <option ng-repeat="region in Regions" value="{{region.id}}">{{region.name}}</option>
                             </select>
                         </div>
@@ -124,7 +124,7 @@
                             <h4><b>Город:</b></h4>
                         </div>
                         <div class="col-sm-7">
-                            <select class="form-control" ng-disabled="!include_city" ng-model="city_id">
+                            <select class="form-control"ng-model="city_id">
                                 <option ng-repeat="city in Cities" value="{{city.id}}">{{city.name}}</option>
                             </select>
                         </div>
@@ -133,19 +133,19 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="checkbox" ng-model="include_price" class="form-control">
+
                         </div>
                         <div class="col-sm-2">
                             <h4><b>Цена c</b></h4>
                         </div>
                         <div class="col-sm-4">
-                            <input type="number" min="0" ng-model="min_price" class="form-control" ng-disabled="!include_price" required>
+                            <input type="number" min="0" ng-model="min_price" class="form-control">
                         </div>
                         <div class="col-sm-1">
                             <h4><b>до</b></h4>
                         </div>
                         <div class="col-sm-4">
-                            <input type="number" min={{min_price}} ng-model="max_price" class="form-control" ng-disabled="!include_price" required>
+                            <input type="number" min={{min_price}} ng-model="max_price" class="form-control">
                         </div>
                     </div>
                 </div><br>
