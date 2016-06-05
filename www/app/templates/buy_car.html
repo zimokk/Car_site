@@ -1,5 +1,7 @@
 <navbar-block info=""></navbar-block>
 <body id="top">
+<div class="row" style=" height:28px"> 
+</div>
 <div class="row">
     <div class="col-md-4" style="border: solid 2px black">
         <form class="form-group" ng-submit="filterCars()">
@@ -175,7 +177,7 @@
         </div>
     </div>
 </div>
-<div class="row" >
+ <div class="row" >
     <div class="col-md-4">
         <div class="row">
             <a href="#top">
@@ -198,9 +200,9 @@
     <div class="col-md-8" style="border: solid 2px black;height:auto">
         <div class="col-md-12" ng-if="Bodies">
            <div class="row"> 
-               <div class="col-md-2">
+               <div class="col-md-4">
                </div>
-               <div class="col-md-3" style="height:auto;font-size:150%">
+               <div class="col-md-2" style="height:auto;font-size:150%">
                    <p align="right"> Сортировать по :</p>
                </div>
                <div class="col-md-2" >
@@ -221,7 +223,6 @@
                        <strong>Году выпуска</strong>
                    </button>
                </div>
-               <div class="col-md-1"></div>
            </div>
             <div class="conainter" style="height:180px;margin-top:15px" ng-repeat="car in Cars">
                 <car-block car="car"></car-block>
