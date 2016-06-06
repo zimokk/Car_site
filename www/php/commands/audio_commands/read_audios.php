@@ -4,44 +4,43 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../objects/antitheft.php';
+include_once '../../objects/audio.php';
 
-// instantiate database and product object
 $database = new Database();
 $db = $database->getConnection();
 
-// initialize object
-$antitheft = new Image($db);
-
-$data = json_decode(file_get_contents("php://input"));
-$antitheft->id = $data->id;
+$audio = new Audio($db);
 
 // query products
-$stmt = $antitheft->readById();
+$stmt = $audio->readAll();
 $num = $stmt->rowCount();
 
 $data="";
-// check if more than 0 record found
+
 if($num>0){
 
     $x=1;
 
     // retrieve our table contents
-    // fetch() is faster than fetchAll()
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         // extract row
         // this will make $row['name'] to
         // just $name only
+
         extract($row);
+
         $data .= '{';
             $data .= '"id":"'  . $id . '",';
-            $data .= '"immobilizer":"'  . $immobilizer . '",';
-            $data .= '"signaling":"' . $signaling . '"';
+            $data .= '"cd_changer":"'  . $cd_changer . '",';
+            $data .= '"cd_player":"'  . $cd_player . '",';
+            $data .= '"mp3_player":"'  . $mp3_player . '",';
+            $data .= '"tv":"'  . $tv . '",';
+            $data .= '"cassette_player":"'  . $cassette_player . '",';
+            $data .= '"subwoofer":"' . $subwoofer . '"';
         $data .= '}';
 
-        $data .= $x<$num ? ',' : ''; $x++;
-    }
+        $data .= $x<$num ? ',' : ''; $x++; }
 }
-// json format output
-echo '{"antithefts":[' . $data . ']}';
+
+echo '{"audios":[' . $data . ']}';
 ?>
