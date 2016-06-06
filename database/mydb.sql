@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 23 2016 г., 18:44
+-- Время создания: Июн 06 2016 г., 22:43
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -19,6 +19,38 @@ SET time_zone = "+00:00";
 --
 -- База данных: `mydb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `antitheft`
+--
+
+CREATE TABLE IF NOT EXISTS `antitheft` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `immobilizer` tinyint(1) DEFAULT NULL,
+  `signaling` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `audio`
+--
+
+CREATE TABLE IF NOT EXISTS `audio` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cd_changer` tinyint(1) DEFAULT NULL,
+  `cd_player` tinyint(1) DEFAULT NULL,
+  `mp3_player` tinyint(1) DEFAULT NULL,
+  `tv` tinyint(1) DEFAULT NULL,
+  `cassette_player` tinyint(1) DEFAULT NULL,
+  `subwoofer` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -69,6 +101,12 @@ CREATE TABLE IF NOT EXISTS `cars` (
   `body_id` int(11) DEFAULT '1',
   `user_id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL,
+  `audio_id` int(11) DEFAULT NULL,
+  `security_id` int(11) DEFAULT NULL,
+  `equipment_id` int(11) DEFAULT NULL,
+  `electric_id` int(11) DEFAULT NULL,
+  `antitheft_id` int(11) DEFAULT NULL,
+  `interior_id` int(11) DEFAULT NULL,
   `creation_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idCars`),
   UNIQUE KEY `idCars_UNIQUE` (`idCars`),
@@ -77,18 +115,23 @@ CREATE TABLE IF NOT EXISTS `cars` (
   KEY `fk_Cars_Models_idx` (`model_id`),
   KEY `fk_Cars_Cities_idx` (`city_id`),
   KEY `fk_Cars_Bodies_idx` (`body_id`),
-  KEY `fk_Cars_Fuels_idx` (`fuel_id`)
+  KEY `fk_Cars_Fuels_idx` (`fuel_id`),
+  KEY `fk_Cars_Audio_idx` (`audio_id`),
+  KEY `fk_Cars_Security_idx` (`security_id`),
+  KEY `fk_Cars_Equipment_idx` (`equipment_id`),
+  KEY `fk_Cars_Electric_idx` (`electric_id`),
+  KEY `fk_Cars_Interior_idx` (`interior_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `cars`
 --
 
-INSERT INTO `cars` (`idCars`, `description`, `mark_id`, `model_id`, `cost`, `year`, `fuel_id`, `transmission`, `body_id`, `user_id`, `city_id`, `creation_time`) VALUES
-(2, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 4, 71, '100000', 2010, 1, 1, 1, 1, 2, '2011-05-10 18:11:50'),
-(5, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 2, 27, '200000', 2012, 2, 2, 9, 2, 3, '2016-01-22 21:11:50'),
-(6, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 3, 61, '300000', 2016, 2, 1, 9, 2, 1, '2016-04-09 20:11:50'),
-(7, 'Норм неплохо ло', 3, 60, '25500', 1999, 1, 2, 5, 1, 2, '2016-05-21 20:11:50');
+INSERT INTO `cars` (`idCars`, `description`, `mark_id`, `model_id`, `cost`, `year`, `fuel_id`, `transmission`, `body_id`, `user_id`, `city_id`, `audio_id`, `security_id`, `equipment_id`, `electric_id`, `antitheft_id`, `interior_id`, `creation_time`) VALUES
+(2, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 4, 71, '100000', 2010, 1, 1, 1, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, '2011-05-10 18:11:50'),
+(5, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 2, 27, '200000', 2012, 2, 2, 9, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, '2016-01-22 21:11:50'),
+(6, 'Отличная машина.За 8 секунд разгоняется до 100 кмч. Советую.МОСЧ', 3, 61, '300000', 2016, 2, 1, 9, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2016-04-09 20:11:50'),
+(7, 'Норм неплохо ло', 3, 60, '25500', 1999, 1, 2, 5, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, '2016-05-21 20:11:50');
 
 -- --------------------------------------------------------
 
@@ -153,6 +196,47 @@ INSERT INTO `countries` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `electric`
+--
+
+CREATE TABLE IF NOT EXISTS `electric` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `computer` tinyint(1) DEFAULT NULL,
+  `rain` tinyint(1) DEFAULT NULL,
+  `light` tinyint(1) DEFAULT NULL,
+  `mirrors_heating` tinyint(1) DEFAULT NULL,
+  `seats_heating` tinyint(1) DEFAULT NULL,
+  `locking` tinyint(1) DEFAULT NULL,
+  `seats` tinyint(1) DEFAULT NULL,
+  `winows_lift` tinyint(1) DEFAULT NULL,
+  `mirrors_electric` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `equipment`
+--
+
+CREATE TABLE IF NOT EXISTS `equipment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `power_steering` tinyint(1) DEFAULT NULL,
+  `climate` tinyint(1) DEFAULT NULL,
+  `conditioner` tinyint(1) DEFAULT NULL,
+  `cruise` tinyint(1) DEFAULT NULL,
+  `xenon` tinyint(1) DEFAULT NULL,
+  `hatch` tinyint(1) DEFAULT NULL,
+  `navigation` tinyint(1) DEFAULT NULL,
+  `tow_hitch` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `int_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `fuels`
 --
 
@@ -187,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `images` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_Images_Cars_idx` (`car_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `images`
@@ -197,6 +281,22 @@ INSERT INTO `images` (`id`, `car_id`, `url`) VALUES
 (3, 2, 'https://i.ytimg.com/vi/NUhfmSfb9oY/maxresdefault.jpg'),
 (4, 5, 'http://www.jaguar.com/Images/XJ_Drive_or_driven_Hero1_Mobile_480x224_tcm76-210876_mobile_480x224.jpg'),
 (5, 6, 'http://www.drivesrt.com/assets/images/2015/charger/hellcat/hero-panel/phone-15-ld-charger-hero.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `interior`
+--
+
+CREATE TABLE IF NOT EXISTS `interior` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `velour` tinyint(1) DEFAULT NULL,
+  `leather` tinyint(1) DEFAULT NULL,
+  `alloy_wheels` tinyint(1) DEFAULT NULL,
+  `wood` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1899,6 +1999,27 @@ INSERT INTO `regions` (`id`, `country_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `security`
+--
+
+CREATE TABLE IF NOT EXISTS `security` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `abs` tinyint(1) DEFAULT NULL,
+  `ebd` tinyint(1) DEFAULT NULL,
+  `ebs` tinyint(1) DEFAULT NULL,
+  `esp` tinyint(1) DEFAULT NULL,
+  `has` tinyint(1) DEFAULT NULL,
+  `hdc` tinyint(1) DEFAULT NULL,
+  `traction` tinyint(1) DEFAULT NULL,
+  `parktronic` tinyint(1) DEFAULT NULL,
+  `airbag` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -1932,10 +2053,15 @@ INSERT INTO `users` (`idUsers`, `login`, `password`, `first_name`, `last_name`, 
 -- Ограничения внешнего ключа таблицы `cars`
 --
 ALTER TABLE `cars`
+  ADD CONSTRAINT `fk_Cars_Interior` FOREIGN KEY (`interior_id`) REFERENCES `interior` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Cars_Audio` FOREIGN KEY (`audio_id`) REFERENCES `audio` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Cities` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Cars_Electric` FOREIGN KEY (`electric_id`) REFERENCES `electric` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Cars_Equipment` FOREIGN KEY (`equipment_id`) REFERENCES `equipment` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Fuels` FOREIGN KEY (`fuel_id`) REFERENCES `fuels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Marks` FOREIGN KEY (`mark_id`) REFERENCES `marks` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Models` FOREIGN KEY (`model_id`) REFERENCES `models` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Cars_Security` FOREIGN KEY (`security_id`) REFERENCES `security` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Users` FOREIGN KEY (`user_id`) REFERENCES `users` (`idUsers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
