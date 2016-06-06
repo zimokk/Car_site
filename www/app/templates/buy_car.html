@@ -187,17 +187,19 @@
             </a>
         </div>
         <div class="row md-padding">
-            <div class="col-sm-4 bg-primary" style="text-align: center">
-                <h4>Другие</h4>
-            </div>
-            <div class="col-sm-8" style="top: -20px">
-                <md-select ng-model="mark_id" ng-change="model_id = null;">
-                    <md-option ng-repeat="mark in Marks.slice(78)" value={{mark.id}}><h4>{{mark.name}}</h4></md-option>
-                </md-select>
+            <div class="col-sm-12 bg-primary" style="text-align: center">
+                <h3>Другие марки авто</h3>
             </div>
         </div>
+        <div class="row">
+            <a href="#top">
+                <button class="btn btn-default col-sm-3" ng-repeat="mark in Marks.slice(78)" onclick="window.scrollTo(0,0);return!1;"
+                        ng-click="changeMark(mark.id)">{{mark.name}}
+                </button>
+            </a>
+        </div>
     </div>
-    <div class="col-md-8" style="border: solid 2px black;height:auto">
+    <div class="col-md-8" style="border: solid 2px black;height:auto; padding: 0px 0px 0px 0px;">
         <div class="col-md-12" ng-if="Bodies">
            <div class="row"> 
                <div class="col-md-4">
@@ -224,8 +226,8 @@
                    </button>
                </div>
            </div>
-            <div class="conainter" style="height:180px;margin-top:15px" ng-repeat="car in Cars">
-                <car-block car="car"></car-block>
+            <div class="row" style="height:180px;margin-top:15px;" ng-repeat="car in Cars">
+                <car-block class="row" car="car"></car-block>
             </div>
         </div>
     </div>
