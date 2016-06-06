@@ -18,6 +18,12 @@ class Car{
     public $city_id;
     public $region_id;
     public $country_id;
+    public $audio_id;
+    public $security_id;
+    public $equipment_id;
+    public $electric_id;
+    public $antitheft_id;
+    public $interior_id;
     public $creation_time;
 
     // constructor with $db as database connection
