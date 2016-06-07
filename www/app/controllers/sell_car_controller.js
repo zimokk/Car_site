@@ -1,9 +1,8 @@
-app.controller('SellCarCtrl', ['$scope','Upload','Images'
+app.controller('SellCarCtrl', ['$scope','Upload','Images','Audio','Antitheft','Electric','Equipment','Interior','Security'
     ,function($scope,Upload,Images) {
         $scope.Images = Images.all;
         $scope.progressValue = 0;
         $scope.uploadFiles = function (files) {
-            debugger
             if (files && files.length) {
                 for (var i = 0; i < files.length; i++) {
                     Upload.upload({
