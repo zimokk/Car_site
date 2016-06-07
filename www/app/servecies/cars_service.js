@@ -1,4 +1,4 @@
-app.factory('Cars',['$http','Images',function($http, Images){
+app.factory('Cars',['$http','Images','Errors',function($http, Images, Errors){
     var carsService = {
         all: [],
         current:{},
@@ -92,6 +92,9 @@ app.factory('Cars',['$http','Images',function($http, Images){
             $http.post('php/commands/cars_commands/read_car.php', {
                 'idCars' : idCars
             }).success(function(response){
+                if(response.cars.length == 0){
+                    Errors.carNotFound();
+                }
                 carsService.current = response.cars[0];
             }).error(function(msg){
 

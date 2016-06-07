@@ -40,5 +40,9 @@ app.config(['$routeProvider', function($routeProvider) {
               }]
           }
         })
-      .otherwise({redirectTo: '/index'});
+      .when('/404', {
+          templateUrl: 'app/templates/errors_templates/404.html',
+          controller: 'NotFoundCtrl'
+      })
+      .otherwise({redirectTo: '/404'});
 }]);
