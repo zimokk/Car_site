@@ -9,6 +9,10 @@ var app = angular.module('myApp', [
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
+        .when('/', {
+            templateUrl: 'app/templates/main.html',
+            controller: 'MainCtrl'
+        })
         .when('/index', {
             templateUrl: 'app/templates/main.html',
             controller: 'MainCtrl'

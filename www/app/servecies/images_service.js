@@ -1,4 +1,4 @@
-app.factory('Images',function($http){
+app.factory('Images',['$http',function($http){
     var imagesService = {
         all: [],
         getAll: function() {
@@ -22,13 +22,27 @@ app.factory('Images',function($http){
             .error(function(data, status, headers, config){
             });
         },
+        createImages: function(newCarId){
+            imagesService.all.forEach(function(image,number){
+                $http.post('php/commands/images_commands/create_image.php', {
+                    'car_id' : newCarId,
+                    'url' : image.url
+                })
+                .success(function(response){
+                    debugger;
+                })
+                .error(function(data, status, headers, config){
+                    debugger
+                });
+            })
+        },
         flush: function(){
             imagesService.all = [];
         },
         addUploaded: function(imageUrl){
             debugger
-            imagesService.all.push({url: imageUrl});
+            imagesService.all.push({url:imageUrl});
         }
     };
     return imagesService;
-});
+}]);
