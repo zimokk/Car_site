@@ -16,6 +16,19 @@ app.factory('Antitheft',function($http){
             }).error(function(msg){
 
             });
+        },
+        createAntitheft: function(immobilizer, signaling){
+            $http.post('php/commands/antitheft_commands/create_antitheft.php', {
+                'immobilizer' : immobilizer,
+                'signaling' : signaling
+            })
+            .success(function(response){
+                debugger
+                angular.copy(response.antithefts,antitheftService.all);
+            })
+            .error(function(data, status, headers, config){
+                debugger
+            });
         }
     };
     return antitheftService;
