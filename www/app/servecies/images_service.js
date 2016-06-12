@@ -42,6 +42,7 @@ app.factory('Images',['$http',function($http){
         addUploaded: function(imageUrl){
             debugger
             imagesService.all.push({url:imageUrl});
+            //imagesService.createImages(2)
         }
     };
     return imagesService;
