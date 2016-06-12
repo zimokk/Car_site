@@ -36,18 +36,60 @@ class Equipment{
     }
     function readById(){
 
-            // select all query
-             $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?;";
+        // select all query
+         $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?;";
 
-            // prepare query statement
-            $stmt = $this->conn->prepare( $query );
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
 
-            // bind id of product to be updated
-            $stmt->bindParam(1, $this->id);
-            // execute query
-            $stmt->execute();
+        // bind id of product to be updated
+        $stmt->bindParam(1, $this->id);
+        // execute query
+        $stmt->execute();
 
-            return $stmt;
+        return $stmt;
+    }
+     function create(){
+        // query to insert record
+        $query = "INSERT INTO " . $this->table_name . " SET id=:id, power_steering=:power_steering, climate=:climate,
+                    conditioner=:conditioner, cruise=:cruise, xenon=:xenon, hatch=:hatch,
+                    navigation=:navigation, tow_hitch=:tow_hitch";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // posted values
+        $this->id=htmlspecialchars(strip_tags($this->id));
+        $this->power_steering=htmlspecialchars(strip_tags($this->power_steering));
+        $this->climate=htmlspecialchars(strip_tags($this->climate));
+        $this->conditioner=htmlspecialchars(strip_tags($this->conditioner));
+        $this->cruise=htmlspecialchars(strip_tags($this->cruise));
+        $this->xenon=htmlspecialchars(strip_tags($this->xenon));
+        $this->hatch=htmlspecialchars(strip_tags($this->hatch));
+        $this->navigation=htmlspecialchars(strip_tags($this->navigation));
+        $this->tow_hitch=htmlspecialchars(strip_tags($this->tow_hitch));
+
+        // bind values
+        $stmt->bindParam(":id", $this->id);
+        $stmt->bindParam(":power_steering", $this->power_steering);
+        $stmt->bindParam(":climate", $this->climate);
+        $stmt->bindParam(":conditioner", $this->conditioner);
+        $stmt->bindParam(":cruise", $this->cruise);
+        $stmt->bindParam(":xenon", $this->xenon);
+        $stmt->bindParam(":hatch", $this->hatch);
+        $stmt->bindParam(":navigation", $this->navigation);
+        $stmt->bindParam(":tow_hitch", $this->tow_hitch);
+
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }else{
+            echo "<pre>";
+                print_r($stmt->errorInfo());
+            echo "</pre>";
+
+            return false;
         }
+    }
 }
 ?>

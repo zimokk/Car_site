@@ -32,18 +32,51 @@ class Interior{
     }
     function readById(){
 
-            // select all query
-             $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?;";
+        // select all query
+         $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?;";
 
-            // prepare query statement
-            $stmt = $this->conn->prepare( $query );
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
 
-            // bind id of product to be updated
-            $stmt->bindParam(1, $this->id);
-            // execute query
-            $stmt->execute();
+        // bind id of product to be updated
+        $stmt->bindParam(1, $this->id);
+        // execute query
+        $stmt->execute();
 
-            return $stmt;
-        }
+        return $stmt;
+    }
+    function create(){
+         // query to insert record
+         $query = "INSERT INTO " . $this->table_name . " SET id=:id, velour=:velour, leather=:leather,
+                     alloy_wheels=:alloy_wheels, wood=:wood";
+
+         // prepare query
+         $stmt = $this->conn->prepare($query);
+
+         // posted values
+         $this->id=htmlspecialchars(strip_tags($this->id));
+         $this->velour=htmlspecialchars(strip_tags($this->velour));
+         $this->leather=htmlspecialchars(strip_tags($this->leather));
+         $this->alloy_wheels=htmlspecialchars(strip_tags($this->alloy_wheels));
+         $this->wood=htmlspecialchars(strip_tags($this->wood));
+
+         // bind values
+         $stmt->bindParam(":id", $this->id);
+         $stmt->bindParam(":velour", $this->velour);
+         $stmt->bindParam(":leather", $this->leather);
+         $stmt->bindParam(":alloy_wheels", $this->alloy_wheels);
+         $stmt->bindParam(":wood", $this->wood);
+
+         // execute query
+         if($stmt->execute()){
+             return true;
+         }else{
+             echo "<pre>";
+                 print_r($stmt->errorInfo());
+             echo "</pre>";
+
+             return false;
+         }
+     }
 }
 ?>

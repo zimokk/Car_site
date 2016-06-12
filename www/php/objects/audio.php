@@ -33,19 +33,57 @@ class Audio{
         return $stmt;
     }
     function readById(){
+        // select all query
+         $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?;";
 
-            // select all query
-             $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?;";
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
 
-            // prepare query statement
-            $stmt = $this->conn->prepare( $query );
+        // bind id of product to be updated
+        $stmt->bindParam(1, $this->id);
+        // execute query
+        $stmt->execute();
 
-            // bind id of product to be updated
-            $stmt->bindParam(1, $this->id);
-            // execute query
-            $stmt->execute();
+        return $stmt;
+    }
 
-            return $stmt;
+    function create(){
+        // query to insert record
+        $query = "INSERT INTO " . $this->table_name . " SET id=:id, cd_changer=:cd_changer, cd_player=:cd_player,
+                    mp3_player=:mp3_player, tv=:tv, cassette_player=:cassette_player, subwoofer=:subwoofer";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // posted values
+        $this->id=htmlspecialchars(strip_tags($this->id));
+        $this->cd_changer=htmlspecialchars(strip_tags($this->cd_changer));
+        $this->cd_player=htmlspecialchars(strip_tags($this->cd_player));
+        $this->mp3_player=htmlspecialchars(strip_tags($this->mp3_player));
+        $this->tv=htmlspecialchars(strip_tags($this->tv));
+        $this->cassette_player=htmlspecialchars(strip_tags($this->cassette_player));
+        $this->subwoofer=htmlspecialchars(strip_tags($this->subwoofer));
+
+
+        // bind values
+        $stmt->bindParam(":id", $this->id);
+        $stmt->bindParam(":cd_changer", $this->cd_changer);
+        $stmt->bindParam(":cd_player", $this->cd_player);
+        $stmt->bindParam(":mp3_player", $this->mp3_player);
+        $stmt->bindParam(":tv", $this->tv);
+        $stmt->bindParam(":cassette_player", $this->cassette_player);
+        $stmt->bindParam(":subwoofer", $this->subwoofer);
+
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }else{
+            echo "<pre>";
+                print_r($stmt->errorInfo());
+            echo "</pre>";
+
+            return false;
         }
+    }
 }
 ?>
