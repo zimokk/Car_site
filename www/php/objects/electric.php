@@ -50,9 +50,37 @@ class Electric{
 
         return $stmt;
     }
+
+    function readByParams(){
+        // select all query
+         $query = "SELECT * FROM " . $this->table_name . " WHERE computer=:computer, rain=:rain,
+                         light=:light, mirrors_heating=:mirrors_heating, seats_heating=:seats_heating, locking=:locking,
+                         seats=:seats, winows_lift=:winows_lift, mirrors_electric=:mirrors_electric
+                             ORDER BY id DESC LIMIT 1; ";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // bind id of product to be updated
+
+        $stmt->bindParam(":computer", $this->computer);
+        $stmt->bindParam(":rain", $this->rain);
+        $stmt->bindParam(":light", $this->light);
+        $stmt->bindParam(":mirrors_heating", $this->mirrors_heating);
+        $stmt->bindParam(":seats_heating", $this->seats_heating);
+        $stmt->bindParam(":locking", $this->locking);
+        $stmt->bindParam(":seats", $this->seats);
+        $stmt->bindParam(":winows_lift", $this->winows_lift);
+        $stmt->bindParam(":mirrors_electric", $this->mirrors_electric);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
      function create(){
         // query to insert record
-        $query = "INSERT INTO " . $this->table_name . " SET id=:id, computer=:computer, rain=:rain,
+        $query = "INSERT INTO " . $this->table_name . " SET computer=:computer, rain=:rain,
                     light=:light, mirrors_heating=:mirrors_heating, seats_heating=:seats_heating, locking=:locking,
                     seats=:seats, winows_lift=:winows_lift, mirrors_electric=:mirrors_electric";
 
@@ -60,7 +88,6 @@ class Electric{
         $stmt = $this->conn->prepare($query);
 
         // posted values
-        $this->id=htmlspecialchars(strip_tags($this->id));
         $this->computer=htmlspecialchars(strip_tags($this->computer));
         $this->rain=htmlspecialchars(strip_tags($this->rain));
         $this->light=htmlspecialchars(strip_tags($this->light));
@@ -72,7 +99,6 @@ class Electric{
         $this->mirrors_electric=htmlspecialchars(strip_tags($this->mirrors_electric));
 
         // bind values
-        $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":computer", $this->computer);
         $stmt->bindParam(":rain", $this->rain);
         $stmt->bindParam(":light", $this->light);

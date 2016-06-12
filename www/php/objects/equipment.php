@@ -49,9 +49,36 @@ class Equipment{
 
         return $stmt;
     }
+
+    function readByParams(){
+        // select all query
+         $query = "SELECT * FROM " . $this->table_name . " WHERE power_steering=:power_steering, climate=:climate,
+                             conditioner=:conditioner, cruise=:cruise, xenon=:xenon, hatch=:hatch,
+                             navigation=:navigation, tow_hitch=:tow_hitch
+                             ORDER BY id DESC LIMIT 1; ";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // bind id of product to be updated
+
+        $stmt->bindParam(":power_steering", $this->power_steering);
+        $stmt->bindParam(":climate", $this->climate);
+        $stmt->bindParam(":conditioner", $this->conditioner);
+        $stmt->bindParam(":cruise", $this->cruise);
+        $stmt->bindParam(":xenon", $this->xenon);
+        $stmt->bindParam(":hatch", $this->hatch);
+        $stmt->bindParam(":navigation", $this->navigation);
+        $stmt->bindParam(":tow_hitch", $this->tow_hitch);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
      function create(){
         // query to insert record
-        $query = "INSERT INTO " . $this->table_name . " SET id=:id, power_steering=:power_steering, climate=:climate,
+        $query = "INSERT INTO " . $this->table_name . " SET power_steering=:power_steering, climate=:climate,
                     conditioner=:conditioner, cruise=:cruise, xenon=:xenon, hatch=:hatch,
                     navigation=:navigation, tow_hitch=:tow_hitch";
 
@@ -59,7 +86,6 @@ class Equipment{
         $stmt = $this->conn->prepare($query);
 
         // posted values
-        $this->id=htmlspecialchars(strip_tags($this->id));
         $this->power_steering=htmlspecialchars(strip_tags($this->power_steering));
         $this->climate=htmlspecialchars(strip_tags($this->climate));
         $this->conditioner=htmlspecialchars(strip_tags($this->conditioner));
@@ -70,7 +96,6 @@ class Equipment{
         $this->tow_hitch=htmlspecialchars(strip_tags($this->tow_hitch));
 
         // bind values
-        $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":power_steering", $this->power_steering);
         $stmt->bindParam(":climate", $this->climate);
         $stmt->bindParam(":conditioner", $this->conditioner);

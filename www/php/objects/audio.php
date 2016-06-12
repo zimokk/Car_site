@@ -46,17 +46,36 @@ class Audio{
 
         return $stmt;
     }
+    function readByParams(){
+        // select all query
+         $query = "SELECT * FROM " . $this->table_name . " WHERE cd_changer=:cd_changer, cd_player=:cd_player,
+                             mp3_player=:mp3_player, tv=:tv, cassette_player=:cassette_player, subwoofer=:subwoofer
+                             ORDER BY id DESC LIMIT 1; ";
 
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // bind id of product to be updated
+        $stmt->bindParam(":cd_changer", $this->cd_changer);
+        $stmt->bindParam(":cd_player", $this->cd_player);
+        $stmt->bindParam(":mp3_player", $this->mp3_player);
+        $stmt->bindParam(":tv", $this->tv);
+        $stmt->bindParam(":cassette_player", $this->cassette_player);
+        $stmt->bindParam(":subwoofer", $this->subwoofer);
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
     function create(){
         // query to insert record
-        $query = "INSERT INTO " . $this->table_name . " SET id=:id, cd_changer=:cd_changer, cd_player=:cd_player,
+        $query = "INSERT INTO " . $this->table_name . " SET  cd_changer=:cd_changer, cd_player=:cd_player,
                     mp3_player=:mp3_player, tv=:tv, cassette_player=:cassette_player, subwoofer=:subwoofer";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // posted values
-        $this->id=htmlspecialchars(strip_tags($this->id));
         $this->cd_changer=htmlspecialchars(strip_tags($this->cd_changer));
         $this->cd_player=htmlspecialchars(strip_tags($this->cd_player));
         $this->mp3_player=htmlspecialchars(strip_tags($this->mp3_player));
@@ -66,7 +85,6 @@ class Audio{
 
 
         // bind values
-        $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":cd_changer", $this->cd_changer);
         $stmt->bindParam(":cd_player", $this->cd_player);
         $stmt->bindParam(":mp3_player", $this->mp3_player);

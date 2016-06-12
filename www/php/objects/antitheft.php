@@ -42,20 +42,34 @@ class Antitheft{
 
         return $stmt;
     }
+    function readByParams(){
+        // select all query
+         $query = "SELECT * FROM " . $this->table_name . " WHERE immobilizer=:immobilizer AND signaling=:signaling
+            ORDER BY id DESC LIMIT 1; ";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // bind id of product to be updated
+        $stmt->bindParam(":immobilizer", $this->immobilizer);
+        $stmt->bindParam(":signaling", $this->signaling);
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
     function create(){
         // query to insert record
-        $query = "INSERT INTO " . $this->table_name . " SET id=:id, immobilizer=:immobilizer, signaling=:signaling";
+        $query = "INSERT INTO " . $this->table_name . " SET  immobilizer=:immobilizer, signaling=:signaling";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // posted values
-        $this->id=htmlspecialchars(strip_tags($this->id));
         $this->immobilizer=htmlspecialchars(strip_tags($this->immobilizer));
         $this->signaling=htmlspecialchars(strip_tags($this->signaling));
 
         // bind values
-        $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":immobilizer", $this->immobilizer);
         $stmt->bindParam(":signaling", $this->signaling);
 

@@ -50,9 +50,36 @@ class Security{
 
         return $stmt;
     }
+    function readByParams(){
+        // select all query
+         $query = "SELECT * FROM " . $this->table_name . " WHERE abs=:abs, ebd=:ebd,
+                             ebs=:ebs, esp=:esp, has=:has, hdc=:hdc,
+                             traction=:traction, parktronic=:parktronic, airbag=:airbag
+                             ORDER BY id DESC LIMIT 1; ";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        // bind id of product to be updated
+
+        $stmt->bindParam(":abs", $this->abs);
+        $stmt->bindParam(":ebd", $this->ebd);
+        $stmt->bindParam(":ebs", $this->ebs);
+        $stmt->bindParam(":esp", $this->esp);
+        $stmt->bindParam(":has", $this->has);
+        $stmt->bindParam(":hdc", $this->hdc);
+        $stmt->bindParam(":traction", $this->traction);
+        $stmt->bindParam(":parktronic", $this->parktronic);
+        $stmt->bindParam(":airbag", $this->airbag);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
      function create(){
         // query to insert record
-        $query = "INSERT INTO " . $this->table_name . " SET id=:id, abs=:abs, ebd=:ebd,
+        $query = "INSERT INTO " . $this->table_name . " SET abs=:abs, ebd=:ebd,
                     ebs=:ebs, esp=:esp, has=:has, hdc=:hdc,
                     traction=:traction, parktronic=:parktronic, airbag=:airbag";
 
@@ -60,7 +87,6 @@ class Security{
         $stmt = $this->conn->prepare($query);
 
         // posted values
-        $this->id=htmlspecialchars(strip_tags($this->id));
         $this->abs=htmlspecialchars(strip_tags($this->abs));
         $this->ebd=htmlspecialchars(strip_tags($this->ebd));
         $this->ebs=htmlspecialchars(strip_tags($this->ebs));
@@ -72,7 +98,6 @@ class Security{
         $this->airbag=htmlspecialchars(strip_tags($this->airbag));
 
         // bind values
-        $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":abs", $this->abs);
         $stmt->bindParam(":ebd", $this->ebd);
         $stmt->bindParam(":ebs", $this->ebs);
