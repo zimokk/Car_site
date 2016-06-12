@@ -1,5 +1,5 @@
 app.controller('SellCarCtrl', ['$scope','Upload','Images','Audio','Antitheft','Electric','Equipment','Interior','Security'
-    ,function($scope,Upload,Images) {
+    ,function($scope,Upload,Images,Audio,Antitheft,Electric,Equipment,Interior,Security) {
         $scope.Images = Images.all;
         $scope.progressValue = 0;
         $scope.uploadFiles = function (files) {
@@ -19,5 +19,8 @@ app.controller('SellCarCtrl', ['$scope','Upload','Images','Audio','Antitheft','E
                     });
                 }
             }
+        };
+        $scope.createCar = function(){
+            //Antitheft.createAntitheft("1","2");
         }
 }]);
