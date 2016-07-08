@@ -105,3 +105,20 @@
     color: #e3891e;
     border: dashed 4px #e3891e;
 }
+
+.image-preview-container{
+    padding: 20px;
+}
+
+.image-preview-div{
+    position: relative;
+    width: 20%;
+    height: 20%;
+    float: left;
+    margin: 20px;
+}
+
+.progress-bar-container{
+    padding: 5px;
+    margin-top: 10px;
+}

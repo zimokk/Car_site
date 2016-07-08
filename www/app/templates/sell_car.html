@@ -229,10 +229,12 @@
                             Загрузить фотографии
                         </span>
                 </button>
+                <div class="progress-bar-container">
+                    <md-progress-linear ng-if="progressValue" md-mode="determinate" value="{{progressValue}}"></md-progress-linear>
+                </div>
             </div>
-            <md-progress-linear ng-if="progressValue" md-mode="determinate" value="{{progressValue}}"></md-progress-linear>
         </div>
-        <div>
+        <div class="row image-preview-container">
             <image-preview-div ng-repeat="image in Images" image=image></image-preview-div>
         </div>
         <div class="row">
