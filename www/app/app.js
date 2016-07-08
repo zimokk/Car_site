@@ -13,6 +13,10 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'app/templates/main.html',
             controller: 'MainCtrl'
         })
+        .when('/registration', {
+          templateUrl: 'app/templates/registration.html',
+          controller: 'RegistrationCtrl'
+        })
         .when('/index', {
             templateUrl: 'app/templates/main.html',
             controller: 'MainCtrl'

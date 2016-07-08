@@ -1,0 +1,10 @@
+.form-div{
+    top: 30%;
+    width: 60%;
+    height: 40%;
+    margin: auto;
+    margin-top: 10%;
+    padding: 5%;
+    font-size: 150%;
+    border: double 1px black;
+}
