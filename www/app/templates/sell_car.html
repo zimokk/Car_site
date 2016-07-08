@@ -235,12 +235,7 @@
             </div>
         </div>
         <div class="row image-preview-container">
-            <image-preview-div ng-repeat="image in Images" image=image></image-preview-div>
-        </div>
-        <div class="row">
-           <div class="col-sm-12">
-               <br>
-           </div>
+            <image-preview-div ng-repeat="image in Images" image=image remove="deleteFunction(image)"></image-preview-div>
         </div>
     </div>
     

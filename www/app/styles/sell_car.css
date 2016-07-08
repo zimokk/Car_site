@@ -122,3 +122,9 @@
     padding: 5px;
     margin-top: 10px;
 }
+
+.delete-btn{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
