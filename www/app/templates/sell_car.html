@@ -214,16 +214,15 @@
                <br>
            </div>
        </div>
-        <div class="row ">
-            <div class="col-sm-4" style="border: solid 2px black"
-                 ngf-drop="uploadFiles($files)" class="drop-box"
+        <div class="row image-box">
+            <div class="col-sm-8 image-box-content download-drop-area drop-box"
+                 ngf-drop="uploadFiles($files)"
                  ngf-drag-over-class="'dragover'" ngf-multiple="true"
                  ngf-pattern="'image/*'" ngf-max-size="10MB">
-                Тащи сюда
+                Drop here
             </div>
-            <div class="col-sm-5">
-                <button style="border: 0; background: chartreuse;color:white"
-                        class="button" ngf-select="uploadFiles($files)" multiple="multiple" ngf-pattern="'image/*'"
+            <div class="col-sm-4 image-box-content">
+                <button class="button download-button" ngf-select="uploadFiles($files)" multiple="multiple" ngf-pattern="'image/*'"
                         ngf-accept="'image/*'" ngf-max-size="20MB">
                     <img src="../../images/photo.png" width="50" height="50" alt="" />
                         <span style="font-size:20px">
@@ -234,14 +233,7 @@
             <md-progress-linear ng-if="progressValue" md-mode="determinate" value="{{progressValue}}"></md-progress-linear>
         </div>
         <div>
-            <img ng-repeat="image in Images" ng-src={{image.url}}>
-        </div>
-        <div class="row ">
-            <div class="col-sm-4">
-            </div>
-            <div class="col-sm-8">
-                Допускается загрузка не более 10 фотографий в формате JPG и PNG размером не более 10МБ
-            </div>
+            <image-preview-div ng-repeat="image in Images" image=image></image-preview-div>
         </div>
         <div class="row">
            <div class="col-sm-12">
