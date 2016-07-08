@@ -22,5 +22,8 @@ app.controller('SellCarCtrl', ['$scope','Upload','Images','Audio','Antitheft','E
         };
         $scope.createCar = function(){
             //Antitheft.createAntitheft("1","2");
+        };
+        $scope.deleteFunction = function(image){
+            Images.deleteItem(image);
         }
 }]);

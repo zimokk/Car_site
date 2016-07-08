@@ -40,9 +40,11 @@ app.factory('Images',['$http',function($http){
             imagesService.all = [];
         },
         addUploaded: function(imageUrl){
-            debugger
             imagesService.all.push({url:imageUrl});
             //imagesService.createImages(2)
+        },
+        deleteItem: function(image){
+            imagesService.all.splice(imagesService.all.indexOf(image),1);
         }
     };
     return imagesService;
