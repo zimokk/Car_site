@@ -1,6 +1,16 @@
 app.controller('SellCarCtrl', ['$scope','Upload','Images','Audio','Antitheft','Electric','Equipment','Interior','Security'
-    ,function($scope,Upload,Images,Audio,Antitheft,Electric,Equipment,Interior,Security) {
+        ,'Countries', 'Regions','Cities'
+    ,function($scope,Upload,Images,Audio,Antitheft,Electric,Equipment,Interior,Security,Countries,Regions,Cities) {
         $scope.Images = Images.all;
+        $scope.Countries = Countries.all;
+        $scope.Regions = Regions.all;
+        $scope.Cities = Cities.all;
+        $scope.updateRegions = function () {
+            Regions.getByCountry($scope.country_id);
+        };
+        $scope.updateCities = function () {
+            Cities.getByRegion($scope.region_id);
+        };
         $scope.progressValue = 0;
         $scope.uploadFiles = function (files) {
             if (files && files.length) {

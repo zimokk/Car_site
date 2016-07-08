@@ -95,6 +95,7 @@
 }
 
 .download-drop-area{
+    margin: 10px;
     font-size: 300%;
     font-weight: 900;
     color: #ff8018;
@@ -116,6 +117,7 @@
     height: 20%;
     float: left;
     margin: 20px;
+    border: ridge 2px #81c3e3;
 }
 
 .progress-bar-container{

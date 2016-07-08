@@ -300,7 +300,7 @@
      <div class="row newStep1">
        <div class="col-sm-1"></div>
         <div class="col-sm-3">
-<strong>Оснащение</strong><br>
+        <strong>Оснащение</strong><br>
        <input type="checkbox"> гидроусилитель руля<br>
        <input type="checkbox"> климат-контроль<br>
        <input type="checkbox"> кондиционер<br>
@@ -334,16 +334,50 @@
        <div class="col-sm-2">
        <strong> <span style="font-size:20px">Данные о продавце</span></strong>
        </div>
-        <div class="col-sm-3"><br><br>
-            Страна <select style="width: 310px;height:30px" class="smalllat" required>
-                <option >  </option>
-            </select><br>
-           <br> Область <select style="width: 300px;height:30px" class="smalllat" required>
-                <option >  </option>
-            </select> <br>
-           <br> Город <select style="width: 320px;height:30px" class="smalllat" required>
-                <option >  </option>
-            </select> <br>
+        <div class="col-sm-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-1">
+
+                    </div>
+                    <div class="col-sm-4">
+                        <h4><b>Страна:</b></h4>
+                    </div>
+                    <div class="col-sm-7">
+                        <select class="form-control" ng-model="country_id" ng-change="updateRegions()">
+                            <option ng-repeat="country in Countries" value="{{country.id}}">{{country.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div><br>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-4">
+                        <h4><b>Область:</b></h4>
+                    </div>
+                    <div class="col-sm-7">
+                        <select class="form-control" ng-model="region_id" ng-change="updateCities()">
+                            <option ng-repeat="region in Regions" value="{{region.id}}">{{region.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div><br>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-4">
+                        <h4><b>Город:</b></h4>
+                    </div>
+                    <div class="col-sm-7">
+                        <select class="form-control" ng-model="city_id">
+                            <option ng-repeat="city in Cities" value="{{city.id}}">{{city.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div><br>
         </div>
         <div class="col-sm-6"></div>  
     </div>
