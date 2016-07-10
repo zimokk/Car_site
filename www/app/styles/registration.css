@@ -1,10 +1,15 @@
 .form-div{
     top: 30%;
-    width: 60%;
-    height: 40%;
+    width: 90%;
+    height: 60%;
     margin: auto;
     margin-top: 10%;
     padding: 5%;
     font-size: 150%;
     border: double 1px black;
+}
+.registration_input_text{
+    text-align: center;
+    font-size: 120%;
+    font-weight: 500;
 }

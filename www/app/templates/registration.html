@@ -1,30 +1,95 @@
 <navbar-block info=""></navbar-block>
-<div class="form-div">
-    <h1><b>Регистрация</b></h1>
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label for="inputEmail" class="control-label col-xs-2">Email</label>
-            <div class="col-xs-10">
-                <input type="email" class="form-control input-lg" id="inputEmail" placeholder="Email">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputPassword" class="control-label col-xs-2">Пароль</label>
-            <div class="col-xs-10">
-                <input type="password" class="form-control input-lg" id="inputPassword" placeholder="Пароль">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-10">
-                <div class="checkbox">
-                    <label><input type="checkbox"> Запомнить</label>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-div">
+            <h1><b>Регистрация</b></h1>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail" class="control-label col-xs-3">Email</label>
+                    <div class="col-xs-9">
+                        <input type="email" class="form-control input-lg" id="inputEmail" placeholder="Email">
+                    </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="inputLogin" class="control-label col-xs-3">Логин</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control input-lg" id="inputLogin" placeholder="Логин">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="control-label col-xs-3">Пароль</label>
+                    <div class="col-xs-9">
+                        <input type="password" class="form-control input-lg" id="inputPassword" placeholder="Пароль">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAgainPassword" class="control-label col-xs-3">Повторите пароль</label>
+                    <div class="col-xs-9">
+                        <input type="password" class="form-control input-lg" id="inputAgainPassword" placeholder="Пароль">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-sm-6">
+                        <div class="form-group registration_input_text">
+                            Имя
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control input-lg" id="inputFirstName" placeholder="Имя">
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-sm-6">
+                        <div class="form-group registration_input_text">
+                            Фамилия
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control input-lg" id="inputLastName" placeholder="Фамилия">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <div class="checkbox">
+                            <label><input type="checkbox"> Запомнить</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-10">
-                <button type="submit" class="btn btn-primary">Войти</button>
-            </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-div">
+            <h1><b>Вход</b></h1>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="enterInputLogin" class="control-label col-xs-2">Логин</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control input-lg" id="enterInputLogin" placeholder="Логин">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="enterInputPassword" class="control-label col-xs-2">Пароль</label>
+                    <div class="col-xs-10">
+                        <input type="password" class="form-control input-lg" id="enterInputPassword" placeholder="Пароль">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <div class="checkbox">
+                            <label><input type="checkbox"> Запомнить</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
