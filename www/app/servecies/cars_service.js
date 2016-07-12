@@ -100,7 +100,7 @@ app.factory('Cars',['$http','Images','Errors',function($http, Images, Errors){
 
             });
         }
-    };
+	};
     carsService.getAll();
     return carsService;
 }]);
