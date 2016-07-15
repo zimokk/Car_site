@@ -32,5 +32,20 @@ class User{
 
         return $stmt;
     }
+
+    function authorize($login, $password){
+        $query = "SELECT * FROM " . $this->table_name . " WHERE login=:login and password=:password ;";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+
+        $stmt->bindParam(":login", $login);
+        $stmt->bindParam(":password", $password);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
 }
 ?>
