@@ -1,3 +1,3 @@
-app.controller('RegistrationCtrl', ['$scope',function($scope) {
+app.controller('RegistrationCtrl', ['$scope','Users',function($scope, Users) {
 
 }]);
