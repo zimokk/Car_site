@@ -3,29 +3,41 @@
     <div class="col-md-6">
         <div class="form-div">
             <h1><b>Регистрация</b></h1>
-            <form class="form-horizontal">
+            <form name="registration_form" class="form-horizontal">
                 <div class="form-group">
                     <label for="inputEmail" class="control-label col-xs-3">Email</label>
-                    <div class="col-xs-9">
-                        <input type="email" class="form-control input-lg" id="inputEmail" placeholder="Email">
+                    <div class="col-xs-8">
+                        <input type="email" ng-model="registration_email" class="form-control input-lg" id="inputEmail" placeholder="Email" ng-blur="checkEmail()" required>
+                    </div>
+                    <div class="col-xs-1">
+                        <span class="glyphicon" ng-class="{'glyphicon-ok right': registration_validation.isEmailValid, 'glyphicon-remove wrong': registration_validation.isEmailInvalid }"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputLogin" class="control-label col-xs-3">Логин</label>
-                    <div class="col-xs-9">
-                        <input type="text" class="form-control input-lg" id="inputLogin" placeholder="Логин">
+                    <div class="col-xs-8">
+                        <input type="text" ng-model="registration_login" class="form-control input-lg" id="inputLogin" placeholder="Логин" ng-blur="checkLogin()" required>
+                    </div>
+                    <div class="col-xs-1">
+                        <span class="glyphicon" ng-class="{'glyphicon-ok right': registration_validation.isLoginValid, 'glyphicon-remove wrong': registration_validation.isLoginInvalid }"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="control-label col-xs-3">Пароль</label>
-                    <div class="col-xs-9">
+                    <div class="col-xs-8">
                         <input type="password" class="form-control input-lg" id="inputPassword" placeholder="Пароль">
+                    </div>
+                    <div class="col-xs-1">
+
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputAgainPassword" class="control-label col-xs-3">Повторите пароль</label>
-                    <div class="col-xs-9">
+                    <div class="col-xs-8">
                         <input type="password" class="form-control input-lg" id="inputAgainPassword" placeholder="Пароль">
+                    </div>
+                    <div class="col-xs-1">
+
                     </div>
                 </div>
                 <div class="row">

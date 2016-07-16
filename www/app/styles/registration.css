@@ -13,3 +13,11 @@
     font-size: 120%;
     font-weight: 500;
 }
+span.wrong{
+    font-size: 100%;
+    color: red;
+}
+span.right{
+    font-size: 100%;
+    color: green;
+}
