@@ -45,7 +45,7 @@ if($num>0){
             $data .= '"first_name":"'  . $first_name . '",';
             $data .= '"last_name":"'  . $last_name . '",';
             $data .= '"phone":"'  . $phone . '",';
-            $data .= '"mail":"'  . $mail . '"';
+            $data .= '"email":"'  . $email . '"';
         $data .= '}';
 
         $data .= $x<$num ? ',' : ''; $x++; }
