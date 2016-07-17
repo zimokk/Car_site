@@ -55,6 +55,9 @@ app.factory('Users',function($http){
             else{
                 usersService.registration_validation.setLoginValidation(false);
             }
+        },
+        logOut: function(){
+            this.current = {};
         }
     };
     usersService.getAll();

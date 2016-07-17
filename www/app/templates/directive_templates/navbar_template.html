@@ -1,10 +1,9 @@
 <div ng-controller="navbarController as main" class="navbar navbar-default">
     <div class="container-fluid">
-        <div class="navbar navbar-fixed-top" style="background-color:grey;height:92px;"> 
+        <div class="navbar navbar-fixed-top" style="background-color:grey;height:92px;">
         <div class="row">
-           
             <div class="col-sm-2"></div>
-            <div class="col-sm-1">         
+            <div class="col-sm-1">
                 <div style="width:150px;height:30px">
                  <a href="#/index">
                   <button class="btn btn-default" style="width:120px;height:70px;border-radius:15px;margin:10px;font-size:15px">Главная</button>
@@ -16,61 +15,66 @@
                  <a href="#/buy_car">
                   <button class="btn btn-default" style="width:150px;height:34px;border-radius:10px;margin-top:10px;font-size:15px"> Купить авто </button>
                   </a>
-             
+
                  <a href="#/sell_car">
                   <button class="btn btn-default" style="width:150px;height:34px;border-radius:10px;margin-top:2px;font-size:15px">  Продать авто </button>
                   </a>
                </div>
-               
+
             </div>
             <div class="col-sm-1">
                <div style="width:150px;height:50px">
                  <a href="#/buy_car">
                   <button class="btn btn-default" style="width:150px;height:34px;border-radius:10px;margin-top:10px;font-size:15px"> Купить запчасть </button>
                   </a>
-             
+
                  <a href="#/sell_car">
                   <button class="btn btn-default" style="width:150px;height:34px;border-radius:10px;margin-top:2px;font-size:15px">  Продать запчасть </button>
                   </a>
                </div>
-               
+
             </div>
-            <div class="col-sm-1">         
+            <div class="col-sm-1">
                 <div style="width:150px;height:30px">
                  <a href="#/index">
                   <button class="btn btn-default" style="width:120px;height:70px;border-radius:15px;margin:10px;font-size:15px">Автоуслуги</button>
                   </a>
                </div>
             </div>
-            <div class="col-sm-1">         
+            <div class="col-sm-1">
                 <div style="width:150px;height:30px">
                  <a href="#/index">
                   <button class="btn btn-default" style="width:135px;height:70px;border-radius:15px;margin:10px;font-size:15px">Принадлежности</button>
                   </a>
                </div>
             </div>
-            <div class="col-sm-1">         
+            <div class="col-sm-1">
                 <div style="width:150px;height:30px">
                  <a href="#/index">
                   <button class="btn btn-default" style="width:120px;height:70px;border-radius:15px;margin:10px;font-size:15px">Автоновости</button>
                   </a>
                </div>
             </div>
-            <div class="col-sm-1">         
+            <div class="col-sm-1">
                 <div style="width:150px;height:30px">
                  <a href="#/index">
                   <button class="btn btn-default" style="width:120px;height:70px;border-radius:15px;margin:10px;font-size:15px">Тест-drive</button>
                   </a>
                </div>
             </div>
-            <div class="col-sm-1">         
+            <div class="col-sm-1">
                 <div style="width:150px;height:30px">
                  <a href="#/index">
                   <button class="btn btn-default" style="width:145px;height:70px;border-radius:15px;margin:10px;font-size:15px">Обзор владельцев</button>
                   </a>
                </div>
             </div>
-            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <div class="currentUserContainer" ng-show="Users.current.login">
+                    Вы вошли как <b>{{Users.current.login}}</b>
+                    <button ng-click="logOut()">Выйти</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
