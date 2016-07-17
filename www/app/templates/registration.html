@@ -3,11 +3,11 @@
     <div class="col-md-6">
         <div class="form-div">
             <h1><b>Регистрация</b></h1>
-            <form name="registration_form" class="form-horizontal">
+            <form name="registration_form" ng-submit="register()" class="form-horizontal">
                 <div class="form-group">
                     <label for="inputEmail" class="control-label col-xs-3">Email</label>
                     <div class="col-xs-8">
-                        <input type="email" ng-model="registration_email" class="form-control input-lg" id="inputEmail" placeholder="Email" ng-blur="checkEmail()" required>
+                        <input type="email" ng-model="newUser.email" class="form-control input-lg" id="inputEmail" placeholder="Email" ng-blur="checkEmail()" required>
                     </div>
                     <div class="col-xs-1">
                         <span class="glyphicon" ng-class="{'glyphicon-ok right': registration_validation.isEmailValid, 'glyphicon-remove wrong': registration_validation.isEmailInvalid }"></span>
@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="inputLogin" class="control-label col-xs-3">Логин</label>
                     <div class="col-xs-8">
-                        <input type="text" ng-model="registration_login" class="form-control input-lg" id="inputLogin" placeholder="Логин" ng-blur="checkLogin()" required>
+                        <input type="text" ng-model="newUser.login" class="form-control input-lg" id="inputLogin" placeholder="Логин" ng-blur="checkLogin()" required>
                     </div>
                     <div class="col-xs-1">
                         <span class="glyphicon" ng-class="{'glyphicon-ok right': registration_validation.isLoginValid, 'glyphicon-remove wrong': registration_validation.isLoginInvalid }"></span>
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label for="inputPassword" class="control-label col-xs-3">Пароль</label>
                     <div class="col-xs-8">
-                        <input type="password" ng-model="password1" class="form-control input-lg" id="inputPassword" placeholder="Пароль" required>
+                        <input type="password" ng-model="newUser.password1" class="form-control input-lg" id="inputPassword" placeholder="Пароль" required>
                     </div>
                     <div class="col-xs-1">
 
@@ -34,10 +34,10 @@
                 <div class="form-group">
                     <label for="inputAgainPassword" class="control-label col-xs-3">Повторите пароль</label>
                     <div class="col-xs-8">
-                        <input type="password" ng-model="password2" class="form-control input-lg" id="inputAgainPassword" placeholder="Пароль" required>
+                        <input type="password" ng-model="newUser.password2" class="form-control input-lg" id="inputAgainPassword" placeholder="Пароль" required>
                     </div>
                     <div class="col-xs-1">
-                        <span class="glyphicon" ng-class="{'glyphicon-ok right': password2 == password1, 'glyphicon-remove wrong': password2 != password1 }"></span>
+                        <span class="glyphicon" ng-class="{'glyphicon-ok right': newUser.password2 == newUser.password1, 'glyphicon-remove wrong': newUser.password2 != newUser.password1 }"></span>
                     </div>
                 </div>
                 <div class="row">
@@ -45,7 +45,7 @@
                         <div class="form-group registration_input_text">
                             Имя
                             <div class="col-xs-12">
-                                <input type="text" class="form-control input-lg" id="inputFirstName" placeholder="Имя" required>
+                                <input type="text" ng-model="newUser.firstName" class="form-control input-lg" id="inputFirstName" placeholder="Имя" required>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="form-group registration_input_text">
                             Фамилия
                             <div class="col-xs-12">
-                                <input type="text" class="form-control input-lg" id="inputLastName" placeholder="Фамилия" required>
+                                <input type="text" ng-model="newUser.lastName" class="form-control input-lg" id="inputLastName" placeholder="Фамилия" required>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <label for="enterInputPhone" class="control-label col-xs-2">Телефон</label>
                     <div class="col-xs-10">
-                        <input type="tel" class="form-control input-lg" id="enterInputPhone" placeholder="Телефон" required>
+                        <input type="tel" ng-model="newUser.phone" class="form-control input-lg" id="enterInputPhone" placeholder="Телефон" required>
                     </div>
                 </div>
                 <div class="form-group">

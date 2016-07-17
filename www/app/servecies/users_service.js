@@ -4,6 +4,25 @@ app.factory('Users',function($http){
         current: {},
         registration_validation: new registration_validation(),
         errors: new users_errors(),
+        register: function(newUser){
+            $http.post('php/commands/users_commands/register.php', {
+                'login' : newUser.login,
+                'email' : newUser.email,
+                'first_name' : newUser.first_name,
+                'last_name' : newUser.last_name,
+                'phone' : newUser.phone,
+                'password' : newUser.password1
+            }).success(function(response){
+                if(response.result == "success") {
+                    //success!!!!!!!!
+                }
+                else{
+                    usersService.errors.registrationError = "Ошибка регистрации."
+                }
+            }).error(function(msg){
+
+            });
+        },
         getAll: function() {
             $http.get("php/commands/users_commands/read_users.php").success(function(response){
                 angular.copy(response.users,usersService.all);
