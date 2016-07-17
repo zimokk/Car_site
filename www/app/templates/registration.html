@@ -77,6 +77,9 @@
                                 Users.registration_validation.isLoginValid)">
                             Зарегестрироваться
                         </button>
+                        <div class="alert alert-danger" ng-show="Users.errors.registrationError">
+                            {{Users.errors.registrationError}}
+                        </div>
                     </div>
                 </div>
             </form>
@@ -109,6 +112,9 @@
                     <div class="col-xs-offset-2 col-xs-10">
                         <button type="submit" class="btn btn-primary">Войти</button>
                     </div>
+                </div>
+                <div class="alert alert-danger" ng-show="Users.errors.loginError">
+                    {{Users.errors.loginError}}
                 </div>
             </form>
         </div>

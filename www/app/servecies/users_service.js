@@ -3,6 +3,7 @@ app.factory('Users',function($http){
         all: [],
         current: {},
         registration_validation: new registration_validation(),
+        errors: new users_errors(),
         getAll: function() {
             $http.get("php/commands/users_commands/read_users.php").success(function(response){
                 angular.copy(response.users,usersService.all);
@@ -13,7 +14,12 @@ app.factory('Users',function($http){
                 'login' : login,
                 'password' : password
             }).success(function(response){
-                angular.copy(response.users[0],usersService.current);
+                if(response.users.length > 0) {
+                    angular.copy(response.users[0], usersService.current);
+                }
+                else{
+                    usersService.errors.loginError = "Неверный логин/пароль";
+                }
             }).error(function(msg){
 
             });
@@ -25,9 +31,11 @@ app.factory('Users',function($http){
                 }).success(function(response){
                     if(response.users.length == 1){
                         usersService.registration_validation.setEmailValidation(false);
+                        usersService.errors.registrationError = "Email уже используется"
                     }
                     else{
                         usersService.registration_validation.setEmailValidation(true);
+                        usersService.errors.registrationError = ""
                     }
                 }).error(function(msg){
 
@@ -35,6 +43,7 @@ app.factory('Users',function($http){
             }
             else{
                 usersService.registration_validation.setEmailValidation(false);
+                usersService.errors.registrationError = "Необходимо ввести Email"
             }
         },
         checkLogin: function(login){
@@ -44,9 +53,11 @@ app.factory('Users',function($http){
                 }).success(function(response){
                     if(response.users.length == 1){
                         usersService.registration_validation.setLoginValidation(false);
+                        usersService.errors.registrationError = "Login уже используется"
                     }
                     else{
                         usersService.registration_validation.setLoginValidation(true);
+                        usersService.errors.registrationError = ""
                     }
                 }).error(function(msg){
 
@@ -54,6 +65,7 @@ app.factory('Users',function($http){
             }
             else{
                 usersService.registration_validation.setLoginValidation(false);
+                usersService.errors.registrationError = "Необходимо ввести Login"
             }
         },
         logOut: function(){
