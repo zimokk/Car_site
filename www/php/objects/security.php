@@ -1,10 +1,8 @@
 <?php
 class Security{
-    // database connection and table name
     private $conn;
     private $table_name = "security";
 
-    // object properties
     public $id;
     public $abs;
     public $ebd;
@@ -16,52 +14,28 @@ class Security{
     public $parktronic;
     public $airbag;
 
-    // constructor with $db as database connection
     public function __construct($db){
         $this->conn = $db;
     }
-
-    // read marks
     function readAll(){
-
-        // select all query
         $query = "SELECT * FROM " . $this->table_name . ";";
-
-        // prepare query statement
         $stmt = $this->conn->prepare( $query );
-
-        // execute query
         $stmt->execute();
-
         return $stmt;
     }
     function readById(){
-
-        // select all query
          $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?;";
-
-        // prepare query statement
         $stmt = $this->conn->prepare( $query );
-
-        // bind id of product to be updated
         $stmt->bindParam(1, $this->id);
-        // execute query
         $stmt->execute();
-
         return $stmt;
     }
     function readByParams(){
-        // select all query
          $query = "SELECT * FROM " . $this->table_name . " WHERE abs=:abs, ebd=:ebd,
                              ebs=:ebs, esp=:esp, has=:has, hdc=:hdc,
                              traction=:traction, parktronic=:parktronic, airbag=:airbag
                              ORDER BY id DESC LIMIT 1; ";
-
-        // prepare query statement
         $stmt = $this->conn->prepare( $query );
-
-        // bind id of product to be updated
-
         $stmt->bindParam(":abs", $this->abs);
         $stmt->bindParam(":ebd", $this->ebd);
         $stmt->bindParam(":ebs", $this->ebs);
@@ -72,21 +46,16 @@ class Security{
         $stmt->bindParam(":parktronic", $this->parktronic);
         $stmt->bindParam(":airbag", $this->airbag);
 
-        // execute query
         $stmt->execute();
 
         return $stmt;
     }
      function create(){
-        // query to insert record
         $query = "INSERT INTO " . $this->table_name . " SET abs=:abs, ebd=:ebd,
                     ebs=:ebs, esp=:esp, has=:has, hdc=:hdc,
                     traction=:traction, parktronic=:parktronic, airbag=:airbag";
-
-        // prepare query
         $stmt = $this->conn->prepare($query);
 
-        // posted values
         $this->abs=htmlspecialchars(strip_tags($this->abs));
         $this->ebd=htmlspecialchars(strip_tags($this->ebd));
         $this->ebs=htmlspecialchars(strip_tags($this->ebs));
@@ -97,7 +66,6 @@ class Security{
         $this->parktronic=htmlspecialchars(strip_tags($this->parktronic));
         $this->airbag=htmlspecialchars(strip_tags($this->airbag));
 
-        // bind values
         $stmt->bindParam(":abs", $this->abs);
         $stmt->bindParam(":ebd", $this->ebd);
         $stmt->bindParam(":ebs", $this->ebs);
@@ -108,14 +76,12 @@ class Security{
         $stmt->bindParam(":parktronic", $this->parktronic);
         $stmt->bindParam(":airbag", $this->airbag);
 
-        // execute query
         if($stmt->execute()){
             return true;
         }else{
             echo "<pre>";
                 print_r($stmt->errorInfo());
             echo "</pre>";
-
             return false;
         }
     }

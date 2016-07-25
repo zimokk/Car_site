@@ -1,10 +1,8 @@
 <?php
 class Electric{
-    // database connection and table name
     private $conn;
     private $table_name = "electric";
 
-    // object properties
     public $id;
     public $computer;
     public $rain;
@@ -16,53 +14,30 @@ class Electric{
     public $winows_lift;
     public $mirrors_electric;
 
-    // constructor with $db as database connection
     public function __construct($db){
         $this->conn = $db;
     }
 
-    // read marks
     function readAll(){
-
-        // select all query
         $query = "SELECT * FROM " . $this->table_name . ";";
-
-        // prepare query statement
         $stmt = $this->conn->prepare( $query );
-
-        // execute query
         $stmt->execute();
-
         return $stmt;
     }
     function readById(){
-
-        // select all query
          $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?;";
-
-        // prepare query statement
         $stmt = $this->conn->prepare( $query );
-
-        // bind id of product to be updated
         $stmt->bindParam(1, $this->id);
-        // execute query
         $stmt->execute();
-
         return $stmt;
     }
 
     function readByParams(){
-        // select all query
          $query = "SELECT * FROM " . $this->table_name . " WHERE computer=:computer, rain=:rain,
                          light=:light, mirrors_heating=:mirrors_heating, seats_heating=:seats_heating, locking=:locking,
                          seats=:seats, winows_lift=:winows_lift, mirrors_electric=:mirrors_electric
                              ORDER BY id DESC LIMIT 1; ";
-
-        // prepare query statement
         $stmt = $this->conn->prepare( $query );
-
-        // bind id of product to be updated
-
         $stmt->bindParam(":computer", $this->computer);
         $stmt->bindParam(":rain", $this->rain);
         $stmt->bindParam(":light", $this->light);
@@ -73,21 +48,15 @@ class Electric{
         $stmt->bindParam(":winows_lift", $this->winows_lift);
         $stmt->bindParam(":mirrors_electric", $this->mirrors_electric);
 
-        // execute query
         $stmt->execute();
-
         return $stmt;
     }
      function create(){
-        // query to insert record
         $query = "INSERT INTO " . $this->table_name . " SET computer=:computer, rain=:rain,
                     light=:light, mirrors_heating=:mirrors_heating, seats_heating=:seats_heating, locking=:locking,
                     seats=:seats, winows_lift=:winows_lift, mirrors_electric=:mirrors_electric";
-
-        // prepare query
         $stmt = $this->conn->prepare($query);
 
-        // posted values
         $this->computer=htmlspecialchars(strip_tags($this->computer));
         $this->rain=htmlspecialchars(strip_tags($this->rain));
         $this->light=htmlspecialchars(strip_tags($this->light));
@@ -98,7 +67,6 @@ class Electric{
         $this->winows_lift=htmlspecialchars(strip_tags($this->winows_lift));
         $this->mirrors_electric=htmlspecialchars(strip_tags($this->mirrors_electric));
 
-        // bind values
         $stmt->bindParam(":computer", $this->computer);
         $stmt->bindParam(":rain", $this->rain);
         $stmt->bindParam(":light", $this->light);
@@ -109,14 +77,12 @@ class Electric{
         $stmt->bindParam(":winows_lift", $this->winows_lift);
         $stmt->bindParam(":mirrors_electric", $this->mirrors_electric);
 
-        // execute query
         if($stmt->execute()){
             return true;
         }else{
             echo "<pre>";
                 print_r($stmt->errorInfo());
             echo "</pre>";
-
             return false;
         }
     }

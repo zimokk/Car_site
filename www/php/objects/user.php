@@ -46,11 +46,8 @@ class User{
     function register(){
         $query = "INSERT INTO " . $this->table_name . " SET login=:login, email=:email,
                             password=:password, first_name=:first_name, last_name=:last_name, phone=:phone ;";
-
-        // prepare query
         $stmt = $this->conn->prepare($query);
 
-        // posted values
         $this->login=htmlspecialchars(strip_tags($this->login));
         $this->email=htmlspecialchars(strip_tags($this->email));
         $this->password=htmlspecialchars(strip_tags($this->password));
@@ -58,7 +55,6 @@ class User{
         $this->last_name=htmlspecialchars(strip_tags($this->last_name));
         $this->phone=htmlspecialchars(strip_tags($this->phone));
 
-        // bind values
         $stmt->bindParam(":login", $this->login);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":password", $this->password);
@@ -66,7 +62,6 @@ class User{
         $stmt->bindParam(":last_name", $this->last_name);
         $stmt->bindParam(":phone", $this->phone);
 
-        // execute query
         if($stmt->execute()){
             return true;
         }else{
