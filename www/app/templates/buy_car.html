@@ -171,18 +171,19 @@
     <div class="col-md-8 row" style="height:660px;">
         <div class="col-md-12 models_list_division" ng-if="mark_id">
             <button class="btn btn-default position-button" ng-repeat="model in Models | where:{ mark_id: mark_id }"
-                    ng-click="changeModel(model.id)" style="width:190px;height:60px">
+                    ng-click="changeModel(model.id)">
                 <h4>{{model.name}}</h4>
             </button>
         </div>
     </div>
 </div>
- <div class="row" >
+<div class="row">
     <div class="col-md-4">
         <div class="row">
             <a href="#top">
                 <button class="btn btn-default col-sm-3" ng-repeat="mark in Marks.slice(0,78)" onclick="window.scrollTo(0,0);return!1;"
-                        ng-click="changeMark(mark.id)">{{mark.name}}
+                        ng-click="changeMark(mark.id)">
+                    {{mark.name}}
                 </button>
             </a>
         </div>
