@@ -1,0 +1,38 @@
+.sell-part-container{
+    position: absolute;
+    display: block;
+    top:100px;
+    width: 100%;
+}
+form div.sell-part-container div.row{
+    margin-left: auto;
+    margin-right: auto;
+}
+.head{
+    text-align: center;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: auto;
+}
+div.description-container div.head{
+    width: 100%;
+}
+div.description-textarea-container{
+    height: 150px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+}
+div.description-container textarea{
+    resize: none;
+    height: 100%;
+}
+
+form input.submit_button{
+    width: 20%;
+    margin-bottom: 20px;
+}
