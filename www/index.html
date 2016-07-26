@@ -21,62 +21,65 @@
   <link rel='stylesheet' href='app/bower_components/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
   <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
+  <body>
 
-<div ng-view></div>
+    <div style="width: 100%; border: 1px solid black" ng-view></div>
 
-<script src="app/bower_components/jquery/dist/jquery.js"></script>
-<script src="app/bower_components/angular/angular.js"></script>
-<script src="app/bower_components/angular-route/angular-route.js"></script>
-<script src="app/bower_components/angular-aria/angular-aria.js"></script>
-<script src="app/bower_components/angular-animate/angular-animate.js"></script>
-<script src="app/bower_components/angular-material/angular-material.js"></script>
-<script src='app/bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
-<script src='app/bower_components/angular-filter/dist/angular-filter.min.js'></script>
-<script src='app/bower_components/ng-file-upload/ng-file-upload.js'></script>
-<script src="app/app.js"></script>
-<!-- Controllers -->
-<script src="app/controllers/app_controller.js"></script>
-<script src="app/controllers/main_controller.js"></script>
-<script src="app/controllers/buy_car_controller.js"></script>
-<script src="app/controllers/sell_car_controller.js"></script>
-<script src="app/controllers/car_info_controller.js"></script>
-<script src="app/controllers/registration_controller.js"></script>
-<script src="app/controllers/buy_part_controller.js"></script>
-<script src="app/controllers/sell_part_controller.js"></script>
-<!-- Errors controllers -->
-<script src="app/controllers/errors_controllers/not_found_controller.js"></script>
-<!-- Directives controllers-->
-<script src="app/controllers/directives_controllers/navbar_controller.js"></script>
-<script src="app/controllers/directives_controllers/car_block_controller.js"></script>
-<script src="app/controllers/directives_controllers/image_preview_controller.js"></script>
-<!-- Servecies -->
-<script src="app/servecies/models_service.js"></script>
-<script src="app/servecies/marks_service.js"></script>
-<script src="app/servecies/countries_service.js"></script>
-<script src="app/servecies/regions_service.js"></script>
-<script src="app/servecies/cities_service.js"></script>
-<script src="app/servecies/bodies_service.js"></script>
-<script src="app/servecies/fuels_service.js"></script>
-<script src="app/servecies/images_service.js"></script>
-<script src="app/servecies/cars_service.js"></script>
-<script src="app/servecies/error_service.js"></script>
-<!-- Cars description servicies-->
-<script src="app/servecies/cars_description_servecies/antitheft_service.js"></script>
-<script src="app/servecies/cars_description_servecies/audio_service.js"></script>
-<script src="app/servecies/cars_description_servecies/electric_service.js"></script>
-<script src="app/servecies/cars_description_servecies/equipment_service.js"></script>
-<script src="app/servecies/cars_description_servecies/interior_service.js"></script>
-<script src="app/servecies/cars_description_servecies/security_service.js"></script>
-<!-- Directives -->
-<script src="app/directives/navbar_directive.js"></script>
-<script src="app/directives/car_block_directive.js"></script>
-<script src="app/directives/image_preview_directive.js"></script>
+    <script src="app/bower_components/jquery/dist/jquery.js"></script>
+    <script src="app/bower_components/angular/angular.js"></script>
+    <script src="app/bower_components/angular-route/angular-route.js"></script>
+    <script src="app/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="app/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="app/bower_components/angular-material/angular-material.js"></script>
+    <script src='app/bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
+    <script src='app/bower_components/angular-filter/dist/angular-filter.min.js'></script>
+    <script src='app/bower_components/ng-file-upload/ng-file-upload.js'></script>
+    <script src="app/app.js"></script>
+    <!-- Controllers -->
+    <script src="app/controllers/app_controller.js"></script>
+    <script src="app/controllers/main_controller.js"></script>
+    <script src="app/controllers/buy_car_controller.js"></script>
+    <script src="app/controllers/sell_car_controller.js"></script>
+    <script src="app/controllers/car_info_controller.js"></script>
+    <script src="app/controllers/registration_controller.js"></script>
+    <script src="app/controllers/buy_part_controller.js"></script>
+    <script src="app/controllers/sell_part_controller.js"></script>
+    <!-- Errors controllers -->
+    <script src="app/controllers/errors_controllers/not_found_controller.js"></script>
+    <!-- Directives controllers-->
+    <script src="app/controllers/directives_controllers/navbar_controller.js"></script>
+    <script src="app/controllers/directives_controllers/car_block_controller.js"></script>
+    <script src="app/controllers/directives_controllers/image_preview_controller.js"></script>
+    <!-- Servicies objects-->
+    <script src="app/servecies/objects/registration_validation.js"></script>
+    <script src="app/servecies/objects/users_errors.js"></script>
+    <!-- Servecies -->
+    <script src="app/servecies/models_service.js"></script>
+    <script src="app/servecies/marks_service.js"></script>
+    <script src="app/servecies/countries_service.js"></script>
+    <script src="app/servecies/regions_service.js"></script>
+    <script src="app/servecies/cities_service.js"></script>
+    <script src="app/servecies/bodies_service.js"></script>
+    <script src="app/servecies/fuels_service.js"></script>
+    <script src="app/servecies/images_service.js"></script>
+    <script src="app/servecies/cars_service.js"></script>
+    <script src="app/servecies/error_service.js"></script>
+    <script src="app/servecies/users_service.js"></script>
+    <!-- Cars description servicies-->
+    <script src="app/servecies/cars_description_servecies/antitheft_service.js"></script>
+    <script src="app/servecies/cars_description_servecies/audio_service.js"></script>
+    <script src="app/servecies/cars_description_servecies/electric_service.js"></script>
+    <script src="app/servecies/cars_description_servecies/equipment_service.js"></script>
+    <script src="app/servecies/cars_description_servecies/interior_service.js"></script>
+    <script src="app/servecies/cars_description_servecies/security_service.js"></script>
+    <!-- Directives -->
+    <script src="app/directives/navbar_directive.js"></script>
+    <script src="app/directives/car_block_directive.js"></script>
+    <script src="app/directives/image_preview_directive.js"></script>
 
-<script src="app/components/version/version.js"></script>
-<script src="app/components/version/version-directive.js"></script>
-<script src="app/components/version/interpolate-filter.js"></script>
-<script src="app/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-
-</body>
+    <script src="app/components/version/version.js"></script>
+    <script src="app/components/version/version-directive.js"></script>
+    <script src="app/components/version/interpolate-filter.js"></script>
+    <script src="app/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  </body>
 </html>

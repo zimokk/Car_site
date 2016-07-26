@@ -48,6 +48,14 @@ app.config(['$routeProvider', function($routeProvider) {
               }]
           }
         })
+        .when('/buy_part', {
+          templateUrl: 'app/templates/buy_part.html',
+          controller: 'BuyPartCtrl'
+        })
+        .when('/sell_part', {
+          templateUrl: 'app/templates/sell_part.html',
+          controller: 'SellPartCtrl'
+        })
       .when('/404', {
           templateUrl: 'app/templates/errors_templates/404.html',
           controller: 'NotFoundCtrl'

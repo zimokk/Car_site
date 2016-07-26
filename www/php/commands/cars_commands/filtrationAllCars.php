@@ -2,15 +2,12 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-// include database and object files
 include_once '../../config/database.php';
 include_once '../../objects/car.php';
 
-// instantiate database and product object
 $database = new Database();
 $db = $database->getConnection();
 
-// initialize object
 $car = new Car($db);
 
 $data = json_decode(file_get_contents("php://input"));
@@ -28,24 +25,14 @@ $min_price = $data->min_price;
 $year_end = $data->year_end;
 $year_begin = $data->year_begin;
 
-// query products
 $stmt = $car->readWithFilter($max_price,$min_price,$year_begin,$year_end);
 $num = $stmt->rowCount();
 
 $data="";
-// check if more than 0 record found
 if($num>0){
-
     $x=1;
-
-    // retrieve our table contents
-    // fetch() is faster than fetchAll()
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        // extract row
-        // this will make $row['name'] to
-        // just $name only
         extract($row);
-
         $data .= '{';
             $data .= '"idCars":"'  . $idCars . '",';
             $data .= '"description":"'  . $description . '",';
@@ -62,10 +49,7 @@ if($num>0){
             $data .= '"country_id":"'  . $country_id . '",';
             $data .= '"creation_time":"'  . $creation_time . '"';
         $data .= '}';
-
         $data .= $x<$num ? ',' : ''; $x++; }
 }
-
-// json format output
 echo '{"cars":[' . $data . ']}';
 ?>

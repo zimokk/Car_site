@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 06 2016 г., 22:43
+-- Время создания: Июл 16 2016 г., 18:29
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -271,16 +271,23 @@ CREATE TABLE IF NOT EXISTS `images` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_Images_Cars_idx` (`car_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Дамп данных таблицы `images`
 --
 
 INSERT INTO `images` (`id`, `car_id`, `url`) VALUES
-(3, 2, 'https://i.ytimg.com/vi/NUhfmSfb9oY/maxresdefault.jpg'),
 (4, 5, 'http://www.jaguar.com/Images/XJ_Drive_or_driven_Hero1_Mobile_480x224_tcm76-210876_mobile_480x224.jpg'),
-(5, 6, 'http://www.drivesrt.com/assets/images/2015/charger/hellcat/hero-panel/phone-15-ld-charger-hero.jpg');
+(5, 6, 'http://www.drivesrt.com/assets/images/2015/charger/hellcat/hero-panel/phone-15-ld-charger-hero.jpg'),
+(9, 2, 'http://res.cloudinary.com/zimokk/image/upload/v1465673363/d89tmk6kwkevabwy6dht.png'),
+(10, 5, 'http://res.cloudinary.com/zimokk/image/upload/v1465748133/lebx0bkd3cycepwt4v94.png'),
+(11, 2, 'http://res.cloudinary.com/zimokk/image/upload/v1465748145/uzvfqtwxnlummtcgo1vx.png'),
+(12, 2, 'http://res.cloudinary.com/zimokk/image/upload/v1465748190/enkmgznavdmrgekewgfb.png'),
+(13, 2, 'http://res.cloudinary.com/zimokk/image/upload/v1465748226/dpzsf8pkzlw7hpaa0w0e.png'),
+(14, 2, 'http://res.cloudinary.com/zimokk/image/upload/v1465748262/ug9vnbrpzd8kswcueg5v.png'),
+(15, 2, 'http://res.cloudinary.com/zimokk/image/upload/v1465748294/z9muty3r7fz4lzlv9aaz.png'),
+(16, 2, 'http://res.cloudinary.com/zimokk/image/upload/v1465748294/z9muty3r7fz4lzlv9aaz.png');
 
 -- --------------------------------------------------------
 
@@ -2030,19 +2037,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
-  `mail` varchar(70) DEFAULT NULL,
+  `email` varchar(70) DEFAULT NULL,
   PRIMARY KEY (`idUsers`),
   UNIQUE KEY `login_UNIQUE` (`login`),
-  UNIQUE KEY `mail_UNIQUE` (`mail`)
+  UNIQUE KEY `mail_UNIQUE` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`idUsers`, `login`, `password`, `first_name`, `last_name`, `phone`, `mail`) VALUES
+INSERT INTO `users` (`idUsers`, `login`, `password`, `first_name`, `last_name`, `phone`, `email`) VALUES
 (1, 'Dimka', 'Dimka228', 'Dmitriy', 'Alexandrovich', '8029228228228', 'petywok'),
-(2, 'Alexey', 'Alexey', 'Alexey', 'Alexey', 'Alexey', 'Alexey'),
+(2, 'Alexey', 'Alexey', 'Alexey', 'Alexey', 'Alexey', 'Alexey@tut.by'),
 (3, 'Mikola', 'Mikola', 'Mikola', 'Mikola', 'Mikola', 'Mikola');
 
 --
@@ -2053,12 +2060,12 @@ INSERT INTO `users` (`idUsers`, `login`, `password`, `first_name`, `last_name`, 
 -- Ограничения внешнего ключа таблицы `cars`
 --
 ALTER TABLE `cars`
-  ADD CONSTRAINT `fk_Cars_Interior` FOREIGN KEY (`interior_id`) REFERENCES `interior` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Audio` FOREIGN KEY (`audio_id`) REFERENCES `audio` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Cities` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Electric` FOREIGN KEY (`electric_id`) REFERENCES `electric` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Equipment` FOREIGN KEY (`equipment_id`) REFERENCES `equipment` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Fuels` FOREIGN KEY (`fuel_id`) REFERENCES `fuels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Cars_Interior` FOREIGN KEY (`interior_id`) REFERENCES `interior` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Marks` FOREIGN KEY (`mark_id`) REFERENCES `marks` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Models` FOREIGN KEY (`model_id`) REFERENCES `models` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Cars_Security` FOREIGN KEY (`security_id`) REFERENCES `security` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
