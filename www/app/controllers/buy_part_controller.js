@@ -1,5 +1,5 @@
-app.controller('BuyPartCtrl', ['$scope','Models','Marks', 'Countries', 'Regions','Cities',
-            function($scope,Models,Marks,Countries,Regions,Cities) {
+app.controller('BuyPartCtrl', ['$scope','Models','Marks', 'Countries', 'Regions','Cities','Parts',
+            function($scope,Models,Marks,Countries,Regions,Cities,Parts) {
     $scope.Models = Models.all;
     $scope.Marks = Marks.all;
     $scope.Countries = Countries.all;
