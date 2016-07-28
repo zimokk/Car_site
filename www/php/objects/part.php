@@ -16,12 +16,15 @@ class Part{
     public $skype;
     public $email;
     public $user_id;
+    public $city_name;
 
     public function __construct($db){
         $this->conn = $db;
     }
     function readAll(){
-        $query = "SELECT * FROM " . $this->table_name . ";";
+        $query = "SELECT parts.id, parts.mark_id, parts.model_id, parts.year_begin, parts.year_end, parts.city_id, parts.region_id,
+                        parts.country_id, parts.description, parts.phone, parts.skype, parts.email, parts.user_id, cities.name as city_name
+                        FROM " . $this->table_name . " Inner join cities on parts.city_id = cities.id ;";
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();
         return $stmt;

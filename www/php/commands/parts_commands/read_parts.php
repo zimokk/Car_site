@@ -32,6 +32,7 @@ if($num>0){
             $data .= '"phone":"'  . $phone . '",';
             $data .= '"skype":"'  . $skype . '",';
             $data .= '"email":"' . $email . '",';
+            $data .= '"city_name":"' . $city_name . '",';
             $data .= '"user_id":"'  . $user_id . '"';
         $data .= '}';
         $data .= $x<$num ? ',' : ''; $x++; }
