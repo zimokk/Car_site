@@ -1,3 +1,29 @@
-<div ng-controller="partBlockController as main">
-    Part
+<div ng-controller="partBlockController as main" class="part-block">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="part-mark-container">
+                Audi / no Audi
+                <p>Год: {{part.year_begin}} по {{part.year_end}}</p>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 part-city-container">
+                    {{part.city_name}}
+                </div>
+                <div class="col-sm-6 part-contact-container">
+                    <p>
+                        {{part.phone}}
+                    </p>
+                    <p>
+                        Skype: {{part.skype}}
+                    </p>
+                    <p>
+                        Email: {{part.email}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 part-description-container">
+            <div>{{part.description}}</div>
+        </div>
+    </div>
 </div>
