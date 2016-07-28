@@ -22,7 +22,7 @@ $part->email = $data->email;
 $part->user_id = $data->user_id;
 
 if($part->create()){
-    echo "Part was created.";
+    echo "success";
 }
 else{
     echo "Unable to create part.";

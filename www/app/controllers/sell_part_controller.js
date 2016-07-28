@@ -6,9 +6,14 @@ app.controller('SellPartCtrl', ['$scope','Models','Marks', 'Countries', 'Regions
     $scope.Regions = Regions.all;
     $scope.Cities = Cities.all;
     $scope.updateRegions = function () {
-        Regions.getByCountry($scope.country_id);
+        Regions.getByCountry($scope.newPart.country_id);
     };
     $scope.updateCities = function () {
-        Cities.getByRegion($scope.region_id);
+        Cities.getByRegion($scope.newPart.region_id);
     };
+    $scope.newPart = {};
+    $scope.addPart = function(){
+        var newPart = $scope.newPart;
+        Parts.createPart(newPart);
+    }
 }]);
