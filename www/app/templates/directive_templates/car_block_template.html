@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-4" style="border: solid 1px black;height:122px;color: #4faab3; font-family: ‘Rouge Script’, cursive; font-weight: normal">
             <strong> Марка:</strong> <i ng-repeat="mark in Marks" ng-if="car.mark_id == mark.id">{{mark.name}}</i>
-            <strong>  Модель:</strong> <i ng-repeat="model in Models" ng-if="car.model_id == model.id">{{model.name}}</i><br>
+            <strong> Модель:</strong> <i ng-repeat="model in Models" ng-if="car.model_id == model.id">{{model.name}}</i><br>
             <strong> Стоимость:</strong> {{car.cost}}<br>
             <strong> Год выпуска:</strong> {{car.year}}<br>
             <strong> Топливо:</strong> <i ng-repeat="fuel in Fuels" ng-if="car.fuel_id == fuel.id">{{fuel.name}}</i><br>
