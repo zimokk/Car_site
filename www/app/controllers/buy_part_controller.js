@@ -5,6 +5,7 @@ app.controller('BuyPartCtrl', ['$scope','Models','Marks', 'Countries', 'Regions'
     $scope.Countries = Countries.all;
     $scope.Regions = Regions.all;
     $scope.Cities = Cities.all;
+    $scope.Parts = Parts.all;
     $scope.updateRegions = function () {
         Regions.getByCountry($scope.country_id);
     };
