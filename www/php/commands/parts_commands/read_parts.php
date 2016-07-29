@@ -33,6 +33,8 @@ if($num>0){
             $data .= '"skype":"'  . $skype . '",';
             $data .= '"email":"' . $email . '",';
             $data .= '"city_name":"' . $city_name . '",';
+            $data .= '"model_name":"' . $model_name . '",';
+            $data .= '"mark_name":"' . $mark_name . '",';
             $data .= '"user_id":"'  . $user_id . '"';
         $data .= '}';
         $data .= $x<$num ? ',' : ''; $x++; }
