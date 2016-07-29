@@ -15,4 +15,11 @@ app.controller('BuyPartCtrl', ['$scope','Models','Marks', 'Countries', 'Regions'
     $scope.changeMark = function(mark_id){
         $scope.mark_id = mark_id;
     };
+    $scope.changeModel = function(model_id){
+        $scope.model_id = model_id;
+        $scope.filterParts();
+    };
+    $scope.filterParts = function(){
+        Parts.filterParts($scope.mark_id, $scope.model_id, $scope.year_begin, $scope.year_end, $scope.country_id, $scope.region_id, $scope.city_id);
+    };
 }]);

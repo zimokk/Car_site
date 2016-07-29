@@ -22,8 +22,7 @@ class Part{
         $this->conn = $db;
     }
     function readAll(){
-        $query = "SELECT parts.id, parts.mark_id, parts.model_id, parts.year_begin, parts.year_end, parts.city_id, parts.region_id,
-                        parts.country_id, parts.description, parts.phone, parts.skype, parts.email, parts.user_id, cities.name as city_name,
+        $query = "SELECT parts.*, cities.name as city_name,
                         marks.name as mark_name, models.name as model_name
                         FROM " . $this->table_name . " Inner join cities on parts.city_id = cities.id
                                                        Inner join models on models.id = parts.model_id
@@ -70,6 +69,56 @@ class Part{
         }else{
             return false;
         }
+    }
+    function readWithFilter($year_begin,$year_end){
+        $helper;
+        if(empty($this->mark_id) and empty($this->model_id) and empty($year_begin)
+            and empty($year_end) and empty($this->country_id)
+            and empty($this->region_id) and empty($this->city_id)){
+                return $this->readAll();
+            }
+        $helper = $helper.' WHERE 1=1';
+        if(!empty($this->mark_id))
+        {
+            $helper = $helper.' and ';
+            $helper = $helper . " parts.mark_id = " . $this->mark_id ;
+        }
+        if(!empty($this->model_id))
+        {
+            $helper = $helper.' and ';
+            $helper = $helper . " parts.model_id = " . $this->model_id ;
+        }
+        if(!empty($year_begin) and !empty($year_end))
+        {
+            $helper = $helper.' and ';
+            $helper = $helper . " parts.year_begin > " . $year_begin . " and parts.year_end < ". $year_end ;
+        }
+        else if(!empty($year_begin)){
+            $helper = $helper.' and ';
+            $helper = $helper . " parts.year_begin >= " . $year_begin;
+        }
+        else if(!empty($year_end)){
+            $helper = $helper.' and ';
+            $helper = $helper . " parts.year_end <= " . $year_end;
+        }
+        if(!empty($this->country_id)){
+            $helper = $helper.' and parts.country_id = '.$this->country_id;
+            if(!empty($this->region_id)){
+                $helper = $helper.' and parts.region_id = '.$this->region_id;
+                if(!empty($this->city_id)){
+                    $helper = $helper.' and parts.city_id = '.$this->city_id;
+                }
+            }
+        }
+        $sql = " SELECT parts.*, cities.name as city_name, marks.name as mark_name, models.name as model_name ".
+            "FROM " . $this->table_name ." Inner join cities on parts.city_id = cities.id
+                                           Inner join models on models.id = parts.model_id
+                                           Inner join marks on marks.id = parts.mark_id ". $helper . " ;" ;
+        /*region + countries*/
+        $query = $sql;
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+        return $stmt;
     }
 }
 ?>

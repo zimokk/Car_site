@@ -32,6 +32,24 @@ app.factory('Parts',function($http){
             }).error(function(msg){
 
             });
+        },
+        filterParts: function(mark_id,model_id,year_begin,year_end,
+                               country_id,region_id,city_id) {
+            debugger
+            $http.post('php/commands/parts_commands/filtrationAllParts.php', {
+                'mark_id' : mark_id,
+                'model_id' : model_id,
+                'year_begin' : year_begin,
+                'year_end' : year_end,
+                'country_id': country_id,
+                'region_id': region_id,
+                'city_id': city_id
+            }).success(function(response){
+                debugger
+                angular.copy(response.parts,partsService.all);
+            }).error(function(msg){
+
+            });
         }
     };
     partsService.getAll();
