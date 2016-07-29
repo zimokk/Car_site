@@ -1,5 +1,6 @@
 .part-block{
-    border: dotted 1px black;
+    border: solid 1px black;
+    height: 160px;
 }
 .part-mark-container{
     text-align: center;
@@ -16,8 +17,10 @@
 }
 .part-description-container{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 158px;
     font-size: large;
-    padding-top: 20px;
+    border-left: solid 1px black;
 }
