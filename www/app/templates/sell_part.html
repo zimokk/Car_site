@@ -1,2 +1,119 @@
 <navbar-block info=""></navbar-block>
-Продать Запччасть
+<div class="sell-part-container row">
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-6">
+        <form class="container-fluid" ng-submit="addPart()">
+            <div class="head">
+                <h1>Продать запчасть</h1>
+            </div>
+            <div class="container mark-container row">
+                <div class="col-md-4">
+                    <h2>Марка авто:</h2>
+                </div>
+                <div class="col-md-8">
+                    <select class="smalllat form-control" ng-model="newPart.mark_id" ng-change="model_id = null;" required>
+                        <option  ng-repeat="mark in Marks" value={{mark.id}}>{{mark.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="container model-container row">
+                <div class="col-md-4">
+                    <h2>Модель:</h2>
+                </div>
+                <div class="col-md-8">
+                    <select class="form-control" ng-model="newPart.model_id" required>
+                        <option ng-repeat="model in Models| where:{ mark_id: newPart.mark_id }" value={{model.id}}>
+                            {{model.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="container year-container row">
+                <div class="col-md-3">
+                    <h2>Год:</h2>
+                </div>
+                <div class="col-sm-4">
+                    <input type="number" ng-model="newPart.year_begin" min="1970" max="2016" class="form-control" required>
+                </div>
+                <div class="col-sm-1">
+                    <h4><b>по</b></h4>
+                </div>
+                <div class="col-sm-4">
+                    <input type="number" ng-model="newPart.year_end" min={{year_begin}} max="2016" class="form-control" required>
+                </div>
+            </div>
+            <div class="container row">
+                <div class="col-sm-4">
+                    <h2>Страна:</h2>
+                </div>
+                <div class="col-sm-8">
+                    <select class="form-control" ng-model="newPart.country_id" ng-change="updateRegions()" required>
+                        <option ng-repeat="country in Countries" value="{{country.id}}">{{country.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="container row">
+                    <div class="col-sm-4">
+                        <h2>Область:</h2>
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control" ng-model="newPart.region_id" ng-change="updateCities()" required>
+                            <option ng-repeat="region in Regions" value="{{region.id}}">{{region.name}}</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="container row">
+                <div class="col-sm-4">
+                    <h2>Город:</h2>
+                </div>
+                <div class="col-sm-8">
+                    <select class="form-control" ng-model="newPart.city_id" required>
+                        <option ng-repeat="city in Cities" value="{{city.id}}">{{city.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="description-container">
+                <div class="head">
+                    <h2>
+                        Информация о продаваемых деталях
+                    </h2>
+                </div>
+                <div class="description-textarea-container">
+                    <textarea class="form-control" ng-model="newPart.description" required></textarea>
+                </div>
+            </div>
+            <div class="container row">
+                <div class="col-sm-4">
+                    <h2>Телефон:</h2>
+                </div>
+                <div class="col-sm-8">
+                    <input type="tel" ng-model="newPart.phone" class="form-control">
+                </div>
+            </div>
+            <div class="container row">
+                <div class="col-sm-4">
+                    <h2>Skype:</h2>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" ng-model="newPart.skype" class="form-control">
+                </div>
+            </div>
+            <div class="container row">
+                <div class="col-sm-4">
+                    <h2>Эл. почта:</h2>
+                </div>
+                <div class="col-sm-8">
+                    <input type="email" ng-model="newPart.email" class="form-control">
+                </div>
+            </div>
+            <div class="container row">
+                <input type="submit" value="Опубликовать" class="form-control submit_button">
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>

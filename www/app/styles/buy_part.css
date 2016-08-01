@@ -1,0 +1,6 @@
+.buy-part-container{
+    position: absolute;
+    display: block;
+    top: 100px;
+    width: 100%;
+}

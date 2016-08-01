@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 16 2016 г., 18:29
+-- Время создания: Июл 27 2016 г., 11:10
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -1958,11 +1958,27 @@ INSERT INTO `models` (`id`, `mark_id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `parts` (
-  `idParts` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `Users_idUsers` int(11) NOT NULL,
-  PRIMARY KEY (`idParts`,`Users_idUsers`),
-  KEY `fk_Parts_Users1_idx` (`Users_idUsers`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mark_id` int(11) NOT NULL,
+  `model_id` int(11) NOT NULL,
+  `year_begin` int(11) DEFAULT NULL,
+  `year_end` int(11) DEFAULT NULL,
+  `city_id` int(11) NOT NULL,
+  `region_id` int(11) NOT NULL,
+  `country_id` int(11) NOT NULL,
+  `description` mediumtext,
+  `phone` varchar(45) DEFAULT NULL,
+  `skype` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `fk_Parts_Marks_idx` (`mark_id`),
+  KEY `fk_Parts_Models_idx` (`model_id`),
+  KEY `fk_Parts_Cities_idx` (`city_id`),
+  KEY `fk_Parts_Regions_idx` (`region_id`),
+  KEY `fk_Parts_Countries_idx` (`country_id`),
+  KEY `fk_Parts_Users_idx` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -2099,7 +2115,12 @@ ALTER TABLE `models`
 -- Ограничения внешнего ключа таблицы `parts`
 --
 ALTER TABLE `parts`
-  ADD CONSTRAINT `fk_Parts_Users1` FOREIGN KEY (`Users_idUsers`) REFERENCES `users` (`idUsers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Parts_Marks` FOREIGN KEY (`mark_id`) REFERENCES `marks` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Parts_Models` FOREIGN KEY (`model_id`) REFERENCES `models` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Parts_Cities` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Parts_Regions` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Parts_Countries` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Parts_Users` FOREIGN KEY (`user_id`) REFERENCES `users` (`idUsers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ограничения внешнего ключа таблицы `recall`

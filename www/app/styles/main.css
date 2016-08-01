@@ -12,3 +12,20 @@
 div.row{
     margin-right: 0px;
 }
+.models_list_division{
+    margin-left: 20px;
+    height:660px;
+    -webkit-column-count: 6; /* Chrome, Safari, Opera */
+    -moz-column-count: 6; /* Firefox */
+    column-count: 6;
+    -webkit-column-fill: auto; /* Chrome, Safari, Opera */
+    -moz-column-fill: auto; /* Firefox */
+    column-fill: auto;
+}
+
+.position-button {
+    width: 140px;
+    margin: 5px;
+    padding: 0;
+    white-space: pre-line;
+}

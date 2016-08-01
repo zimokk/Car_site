@@ -1,2 +1,132 @@
 <navbar-block info=""></navbar-block>
-Купить Запчасть
+<div class="buy-part-container">
+    <div class="row">
+        <div class="col-md-4">
+            <form class="form-group" ng-submit="filterParts()">
+                <div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Марка авто:</h2>
+                                <select class="smalllat form-control" ng-model="mark_id" ng-change="model_id = null;" required>
+                                    <option  ng-repeat="mark in Marks" value={{mark.id}}>{{mark.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <h2>Модель:</h2>
+                                <select class="form-control" ng-model="model_id" required>
+                                    <option ng-repeat="model in Models| where:{ mark_id: mark_id }" value={{model.id}}>
+                                        {{model.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-1">
+
+                            </div>
+                            <div class="col-sm-2">
+                                <h4><b>Год c </b></h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="number" ng-model="year_begin" min="1970" max="2016" class="form-control">
+                            </div>
+                            <div class="col-sm-1">
+                                <h4><b>по</b></h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="number" ng-model="year_end" min={{year_begin}} max="2016" class="form-control">
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-1">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <h4><b>Страна:</b></h4>
+                            </div>
+                            <div class="col-sm-7">
+                                <select class="form-control" ng-model="country_id" ng-change="updateRegions()">
+                                    <option ng-repeat="country in Countries" value="{{country.id}}">{{country.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-4">
+                                <h4><b>Область:</b></h4>
+                            </div>
+                            <div class="col-sm-7">
+                                <select class="form-control" ng-model="region_id" ng-change="updateCities()">
+                                    <option ng-repeat="region in Regions" value="{{region.id}}">{{region.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-1">
+                            </div>
+                            <div class="col-sm-4">
+                                <h4><b>Город:</b></h4>
+                            </div>
+                            <div class="col-sm-7">
+                                <select class="form-control"ng-model="city_id">
+                                    <option ng-repeat="city in Cities" value="{{city.id}}">{{city.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="submit" value="Найти" class=" form-control btn btn-info">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8 row" style="height:660px;">
+            <div class="col-md-12 models_list_division" ng-if="mark_id">
+                <button class="btn btn-default position-button" ng-repeat="model in Models | where:{ mark_id: mark_id }"
+                        ng-click="changeModel(model.id)">
+                    <h4>{{model.name}}</h4>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <a href="#top">
+                    <button class="btn btn-default col-sm-3" ng-repeat="mark in Marks.slice(0,78)" onclick="window.scrollTo(0,0);return!1;"
+                            ng-click="changeMark(mark.id)">{{mark.name}}
+                    </button>
+                </a>
+            </div>
+            <div class="row md-padding">
+                <div class="col-sm-12 bg-primary" style="text-align: center">
+                    <h3>Другие марки авто</h3>
+                </div>
+            </div>
+            <div class="row">
+                <a href="#top">
+                    <button class="btn btn-default col-sm-3" ng-repeat="mark in Marks.slice(78)" onclick="window.scrollTo(0,0);return!1;"
+                            ng-click="changeMark(mark.id)">{{mark.name}}
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <part-block ng-repeat="partItem in Parts" part="partItem"></part-block>
+        </div>
+    </div>
+</div>

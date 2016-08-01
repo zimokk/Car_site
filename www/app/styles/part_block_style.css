@@ -1,0 +1,26 @@
+.part-block{
+    border: solid 1px black;
+    height: 160px;
+}
+.part-mark-container{
+    text-align: center;
+    padding: 10px;
+}
+.part-contact-container{
+    text-align: center;
+    font-size: small;
+}
+.part-city-container{
+    text-align: center;
+    padding-top: 30px;
+    height: 100%;
+}
+.part-description-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 158px;
+    font-size: large;
+    border-left: solid 1px black;
+}
